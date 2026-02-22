@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKER: Day in the Life — 3D Hacker Sim | Dawn Games</title>
+    <meta name="description" content="Live the hacker life. Hack targets, dodge the FBI, pay rent, and survive in a cyberpunk apartment. Free on Google Play.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green: #33ff88;
+            --green-dim: #1a9955;
+            --cyan: #00e5ff;
+            --red: #ff4444;
+            --amber: #ffaa22;
+            --bg: #030a06;
+            --bg-light: #081a10;
+            --text-dim: rgba(51, 255, 136, 0.5);
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg);
+            color: var(--green);
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; }
+
+        /* Scanlines */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                transparent, transparent 2px,
+                rgba(0, 0, 0, 0.08) 2px, rgba(0, 0, 0, 0.08) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Nav */
+        .back-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(3, 10, 6, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(51, 255, 136, 0.1);
+        }
+
+        .back-link {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--green); }
+
+        .nav-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links-right {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links-right a {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links-right a:hover { color: var(--green); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--amber);
+            border: 1px solid rgba(255, 170, 34, 0.3);
+            padding: 0.4rem 1.2rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 40px rgba(51, 255, 136, 0.4), 0 0 80px rgba(51, 255, 136, 0.15);
+            animation: flicker 5s infinite;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+            letter-spacing: 0.25em;
+        }
+
+        .hero-tagline {
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+            color: var(--text-dim);
+            margin-top: 2rem;
+            max-width: 550px;
+            line-height: 1.7;
+        }
+
+        .hero-terminal {
+            margin-top: 3rem;
+            background: rgba(51, 255, 136, 0.03);
+            border: 1px solid rgba(51, 255, 136, 0.15);
+            padding: 1.5rem 2rem;
+            text-align: left;
+            max-width: 500px;
+            width: 100%;
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .terminal-line { color: var(--text-dim); }
+        .terminal-line .cmd { color: var(--green); }
+        .terminal-line .warn { color: var(--amber); }
+        .terminal-line .err { color: var(--red); }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+
+        .cta-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--green);
+            color: var(--green);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            background: rgba(51, 255, 136, 0.05);
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(51, 255, 136, 0.12);
+            box-shadow: 0 0 30px rgba(51, 255, 136, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: var(--bg);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background: #55ffaa;
+            box-shadow: 0 0 40px rgba(51, 255, 136, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(51, 255, 136, 0.3);
+        }
+
+        .section-title::before { content: '> '; color: var(--text-dim); }
+
+        .divider {
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(51, 255, 136, 0.25), transparent);
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            border: 1px solid rgba(51, 255, 136, 0.12);
+            padding: 2rem;
+            background: rgba(51, 255, 136, 0.02);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(51, 255, 136, 0.35);
+            background: rgba(51, 255, 136, 0.05);
+            box-shadow: 0 0 20px rgba(51, 255, 136, 0.08);
+        }
+
+        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .feature-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+        .feature-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+        /* Mini-games */
+        .minigames-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .minigame-row {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(51, 255, 136, 0.1);
+            background: rgba(51, 255, 136, 0.02);
+            transition: all 0.3s;
+        }
+
+        .minigame-row:hover {
+            border-color: rgba(51, 255, 136, 0.3);
+            background: rgba(51, 255, 136, 0.05);
+        }
+
+        .minigame-icon { font-size: 1.8rem; min-width: 40px; text-align: center; }
+        .minigame-name { font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; }
+        .minigame-desc { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.3rem; }
+
+        /* Ranks */
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .rank-card {
+            text-align: center;
+            padding: 1.2rem;
+            border: 1px solid rgba(51, 255, 136, 0.1);
+            background: rgba(51, 255, 136, 0.02);
+            transition: all 0.3s;
+        }
+
+        .rank-card:hover {
+            border-color: var(--rank-color, var(--green));
+            box-shadow: 0 0 15px color-mix(in srgb, var(--rank-color, var(--green)) 30%, transparent);
+        }
+
+        .rank-level { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+        .rank-name { font-size: 0.85rem; font-weight: 700; color: var(--rank-color, var(--green)); }
+
+        /* Screenshots */
+        .screenshots-scroll {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0 2rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar { height: 4px; }
+        .screenshots-scroll::-webkit-scrollbar-track { background: rgba(51, 255, 136, 0.05); }
+        .screenshots-scroll::-webkit-scrollbar-thumb { background: rgba(51, 255, 136, 0.3); }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+        }
+
+        .screenshot-placeholder {
+            width: 300px;
+            aspect-ratio: 16/9;
+            border: 1px dashed rgba(51, 255, 136, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            background: rgba(51, 255, 136, 0.02);
+        }
+
+        /* Privacy */
+        .privacy-content { line-height: 1.8; color: var(--text-dim); font-size: 0.85rem; }
+        .privacy-content h3 { color: var(--green); font-size: 1rem; margin: 2rem 0 0.5rem; letter-spacing: 0.05em; }
+        .privacy-content p { margin-bottom: 1rem; }
+        .privacy-content a { color: var(--green-dim); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a { color: var(--green-dim); text-decoration: none; }
+        .footer-links a:hover { color: var(--green); }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            90% { opacity: 1; }
+            91% { opacity: 0.85; }
+            92% { opacity: 1; }
+            95% { opacity: 0.9; }
+            96% { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            section { padding: 4rem 1.5rem; }
+            .feature-card { padding: 1.5rem; }
+            .back-nav { padding: 0.8rem 1rem; }
+            .hero-terminal { padding: 1rem; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas class="particles" id="particles"></canvas>
+
+<div class="content">
+
+    <!-- NAV -->
+    <nav class="back-nav">
+        <a href="index.html" class="back-link">← Dawn Games</a>
+        <span class="nav-title">HACKER</span>
+        <div class="nav-links-right">
+            <a href="#features">Features</a>
+            <a href="#minigames">Mini-Games</a>
+            <a href="#privacy">Privacy</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">3D Hacker Simulation</div>
+        <div class="hero-title">HACKER</div>
+        <div class="hero-sub">DAY IN THE LIFE</div>
+        <p class="hero-tagline">Live the hacker life. Walk around your cyberpunk apartment, hack targets from your terminal, dodge the FBI, and try to pay rent. How long can you survive?</p>
+
+        <div class="hero-terminal">
+            <div class="terminal-line"><span class="cmd">root@hackbox:~$</span> scan --targets</div>
+            <div class="terminal-line">Found 20+ targets... <span class="warn">[FBI HEAT: 67%]</span></div>
+            <div class="terminal-line"><span class="cmd">root@hackbox:~$</span> hack corporate_server</div>
+            <div class="terminal-line"><span class="cmd">[████████░░]</span> Breaching firewall...</div>
+            <div class="terminal-line"><span style="color: var(--green);">ACCESS GRANTED</span> — <span class="warn">+$2,400</span> <span class="err">+15% HEAT</span></div>
+            <div class="terminal-line"><span class="cmd">root@hackbox:~$</span> <span class="cursor-blink">_</span></div>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">▶ GET IT ON GOOGLE PLAY</a>
+            <a href="#features" class="btn">LEARN MORE</a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="section-title">FEATURES</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <div class="feature-name">3D APARTMENT</div>
+                <div class="feature-desc">Walk around your hacker den in full 3D. Explore your desk setup, bed, mining rig, and watch your apartment upgrade as you get richer.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <div class="feature-name">HACK FROM YOUR TERMINAL</div>
+                <div class="feature-desc">Sit at your computer and pick targets. Personal accounts, corporate servers, government databases — each with unique mini-games.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚨</div>
+                <div class="feature-name">FBI HEAT SYSTEM</div>
+                <div class="feature-desc">Every hack raises your heat. Push it too far and the FBI kicks down your door. Survive raids by shredding evidence before time runs out.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⛏️</div>
+                <div class="feature-name">CRYPTO MINING</div>
+                <div class="feature-desc">Build and upgrade your mining rig for passive income. GPU upgrades, cooling systems, and overclocking — all from your apartment.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <div class="feature-name">DARK WEB CONTRACTS</div>
+                <div class="feature-desc">Take high-risk jobs from anonymous clients. Corporate espionage, whistleblower leaks, crypto heists — but watch out for FBI honeypots.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏪</div>
+                <div class="feature-name">UPGRADE SHOP</div>
+                <div class="feature-desc">Buy VPNs, encryption tools, burner laptops, and more. Reduce your FBI heat, boost your hack speed, and protect your assets.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <div class="feature-name">PAY RENT OR DIE</div>
+                <div class="feature-desc">Rent is due every 7 days. Miss it and you're evicted. Balance your spending between upgrades and keeping a roof over your head.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-name">ZERO ADS. ZERO IAP.</div>
+                <div class="feature-desc">No ads. No in-app purchases. No energy systems. Just pure gameplay. Download and play — that's it.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- MINI-GAMES -->
+    <section id="minigames">
+        <div class="section-title">HACKING MINI-GAMES</div>
+        <div class="minigames-list">
+            <div class="minigame-row">
+                <div class="minigame-icon">🔑</div>
+                <div>
+                    <div class="minigame-name">PASSWORD CRACKER</div>
+                    <div class="minigame-desc">Memorize hex passwords and decode them before time runs out.</div>
+                </div>
+            </div>
+            <div class="minigame-row">
+                <div class="minigame-icon">🛡️</div>
+                <div>
+                    <div class="minigame-name">FIREWALL BYPASS</div>
+                    <div class="minigame-desc">Navigate through security grids while dodging patrol nodes.</div>
+                </div>
+            </div>
+            <div class="minigame-row">
+                <div class="minigame-icon">📡</div>
+                <div>
+                    <div class="minigame-name">PACKET INTERCEPT</div>
+                    <div class="minigame-desc">Catch data packets falling in a Matrix-style rain.</div>
+                </div>
+            </div>
+            <div class="minigame-row">
+                <div class="minigame-icon">🔐</div>
+                <div>
+                    <div class="minigame-name">ENCRYPTION BREAK</div>
+                    <div class="minigame-desc">A Simon Says-style sequence game with a cyberpunk twist.</div>
+                </div>
+            </div>
+            <div class="minigame-row">
+                <div class="minigame-icon">🗣️</div>
+                <div>
+                    <div class="minigame-name">SOCIAL ENGINEERING</div>
+                    <div class="minigame-desc">Pick the right dialogue options to con your way past security.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- RANKS -->
+    <section id="ranks">
+        <div class="section-title">REPUTATION RANKS</div>
+        <p style="text-align: center; color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem; margin-top: -1.5rem;">Rise from nobody to legend. Each rank unlocks deadlier targets.</p>
+        <div class="ranks-grid">
+            <div class="rank-card" style="--rank-color: #888888"><div class="rank-level">LEVEL 1</div><div class="rank-name">SCRIPT KIDDIE</div></div>
+            <div class="rank-card" style="--rank-color: #44bb44"><div class="rank-level">LEVEL 2</div><div class="rank-name">PHISHER</div></div>
+            <div class="rank-card" style="--rank-color: #33cccc"><div class="rank-level">LEVEL 3</div><div class="rank-name">GREY HAT</div></div>
+            <div class="rank-card" style="--rank-color: #4488ff"><div class="rank-level">LEVEL 4</div><div class="rank-name">EXPLOIT DEV</div></div>
+            <div class="rank-card" style="--rank-color: #aa44ff"><div class="rank-level">LEVEL 5</div><div class="rank-name">ZERO DAY</div></div>
+            <div class="rank-card" style="--rank-color: #ff4488"><div class="rank-level">LEVEL 6</div><div class="rank-name">GHOST</div></div>
+            <div class="rank-card" style="--rank-color: #ff6622"><div class="rank-level">LEVEL 7</div><div class="rank-name">SHADOW BROKER</div></div>
+            <div class="rank-card" style="--rank-color: #ffaa00"><div class="rank-level">LEVEL 8</div><div class="rank-name">CYBER WARLORD</div></div>
+            <div class="rank-card" style="--rank-color: #ff2222"><div class="rank-level">LEVEL 9</div><div class="rank-name">ANONYMOUS</div></div>
+            <div class="rank-card" style="--rank-color: #ffffff"><div class="rank-level">LEVEL 10</div><div class="rank-name">GOD MODE</div></div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SCREENSHOTS -->
+    <section id="screenshots">
+        <div class="section-title">SCREENSHOTS</div>
+        <div class="screenshots-scroll">
+            <div class="screenshot-item"><div class="screenshot-placeholder">screenshot coming soon</div></div>
+            <div class="screenshot-item"><div class="screenshot-placeholder">screenshot coming soon</div></div>
+            <div class="screenshot-item"><div class="screenshot-placeholder">screenshot coming soon</div></div>
+            <div class="screenshot-item"><div class="screenshot-placeholder">screenshot coming soon</div></div>
+        </div>
+        <p style="text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 1rem;">← scroll →</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PRIVACY -->
+    <section id="privacy">
+        <div class="section-title">PRIVACY POLICY</div>
+        <div class="privacy-content">
+            <p><strong>Last updated:</strong> February 22, 2026<br><strong>Developer:</strong> Dawn Games</p>
+
+            <h3>// OVERVIEW</h3>
+            <p>Hacker: Day in the Life is a free single-player mobile game. We respect your privacy.</p>
+
+            <h3>// DATA COLLECTION</h3>
+            <p>This app does <strong>NOT</strong> collect, store, or transmit any personal data. No analytics. No tracking. No ad SDKs. No account required.</p>
+
+            <h3>// LOCAL STORAGE</h3>
+            <p>Game progress and settings are stored <strong>locally on your device only</strong>. This data never leaves your device and is deleted when you uninstall.</p>
+
+            <h3>// CHILDREN'S PRIVACY</h3>
+            <p>This app does not knowingly collect data from children or any other users.</p>
+
+            <h3>// CONTACT</h3>
+            <p>Questions? Contact us at: <strong><a href="mailto:dawngames@dawngamesapp.com">dawngames@dawngamesapp.com</a></strong></p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="divider"></div>
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">← Dawn Games</a>
+            <a href="#features">Features</a>
+            <a href="#minigames">Mini-Games</a>
+            <a href="#ranks">Ranks</a>
+            <a href="#privacy">Privacy</a>
+        </div>
+        <p>© 2026 Dawn Games. HACKER: Day in the Life.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.7rem; color: rgba(51, 255, 136, 0.3);">root@hackbox:~$ echo "it's not illegal if you don't get caught"</p>
+    </footer>
+
+</div>
+
+<script>
+// Floating particle effect
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const particles = [];
+for (let i = 0; i < 60; i++) {
+    particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 2 + 0.5,
+        speedY: Math.random() * 0.3 + 0.1,
+        speedX: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.3 + 0.05
+    });
+}
+
+function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        ctx.fillStyle = `rgba(51, 255, 136, ${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.y -= p.speedY;
+        p.x += p.speedX;
+
+        if (p.y < -10) {
+            p.y = canvas.height + 10;
+            p.x = Math.random() * canvas.width;
+        }
+    });
+    requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+
+</body>
+</html>
