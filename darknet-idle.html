@@ -181,6 +181,53 @@
             box-shadow: 0 0 40px rgba(0, 255, 0, 0.5);
         }
 
+        .coming-soon-badge {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 200, 100, 0.05));
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            border-radius: 16px;
+            padding: 2rem 3rem;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.1), inset 0 0 60px rgba(0, 255, 0, 0.03);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.1), inset 0 0 60px rgba(0, 255, 0, 0.03); }
+            50% { box-shadow: 0 0 60px rgba(0, 255, 0, 0.2), inset 0 0 80px rgba(0, 255, 0, 0.05); }
+        }
+
+        .coming-soon-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--green);
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-platforms {
+            font-size: 1rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .platform-icon {
+            font-size: 1.2rem;
+        }
+
+        .platform-divider {
+            color: rgba(0, 255, 0, 0.3);
+            margin: 0 0.3rem;
+        }
+
         /* Sections */
         section {
             padding: 6rem 2rem;
@@ -363,9 +410,17 @@
         <p class="hero-tagline">Hack the planet. Tap to mine $CRYPT0, build botnets, and become a digital ghost. A satisfying sensory experience for every kind of mind.</p>
         <div class="hero-prompt">root@darknet:~$ ./start_hacking<span class="cursor-blink">_</span></div>
         <div class="cta-buttons">
-            <a href="#" class="btn btn-primary">▶ DOWNLOAD ON GOOGLE PLAY</a>
-            <a href="#features" class="btn">LEARN MORE</a>
+            <div class="coming-soon-badge">
+                <div class="coming-soon-icon">🚀</div>
+                <div class="coming-soon-text">COMING SOON</div>
+                <div class="coming-soon-platforms">
+                    <span class="platform-icon">🍎</span> iOS
+                    <span class="platform-divider">•</span>
+                    <span class="platform-icon">🤖</span> Google Play
+                </div>
+            </div>
         </div>
+        <a href="#features" class="btn" style="margin-top: 1.5rem;">LEARN MORE</a>
     </section>
 
     <div class="divider"></div>
