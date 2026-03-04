@@ -9,8 +9,8 @@ img = Image.open(input_path).convert("RGBA")
 pixels = img.load()
 w, h = img.size
 
-# Flood fill from all edges - any pixel that's very dark (near black) and connected to the edge
-threshold = 30  # pixels with R,G,B all below this are "black"
+# Higher threshold to catch dark grays too
+threshold = 50
 visited = set()
 q = queue.Queue()
 
@@ -33,11 +33,16 @@ while not q.empty():
     r, g, b, a = pixels[x, y]
     if r < threshold and g < threshold and b < threshold:
         pixels[x, y] = (0, 0, 0, 0)
-        # Check neighbors
-        for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
+        for dx, dy in [(-1,0),(1,0),(0,-1),(0,1),(-1,-1),(1,-1),(-1,1),(1,1)]:
             nx, ny = x+dx, y+dy
             if 0 <= nx < w and 0 <= ny < h and (nx, ny) not in visited:
                 q.put((nx, ny))
 
+# Now crop to the non-transparent bounding box
+bbox = img.getbbox()
+if bbox:
+    img = img.crop(bbox)
+    print(f"Cropped to: {img.size[0]}x{img.size[1]}")
+
 img.save(output_path)
-print(f"Done - saved to {output_path} ({w}x{h})")
+print(f"Done - saved to {output_path}")
