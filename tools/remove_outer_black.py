@@ -9,8 +9,8 @@ img = Image.open(input_path).convert("RGBA")
 pixels = img.load()
 w, h = img.size
 
-# Higher threshold to catch dark grays too
-threshold = 50
+# Lower threshold so we don't eat into the logo's dark edges
+threshold = 25
 visited = set()
 q = queue.Queue()
 
@@ -33,15 +33,20 @@ while not q.empty():
     r, g, b, a = pixels[x, y]
     if r < threshold and g < threshold and b < threshold:
         pixels[x, y] = (0, 0, 0, 0)
-        for dx, dy in [(-1,0),(1,0),(0,-1),(0,1),(-1,-1),(1,-1),(-1,1),(1,1)]:
+        for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
             nx, ny = x+dx, y+dy
             if 0 <= nx < w and 0 <= ny < h and (nx, ny) not in visited:
                 q.put((nx, ny))
 
-# Now crop to the non-transparent bounding box
+# Crop to non-transparent bounding box with padding
 bbox = img.getbbox()
 if bbox:
-    img = img.crop(bbox)
+    pad = 5
+    x1 = max(0, bbox[0] - pad)
+    y1 = max(0, bbox[1] - pad)
+    x2 = min(w, bbox[2] + pad)
+    y2 = min(h, bbox[3] + pad)
+    img = img.crop((x1, y1, x2, y2))
     print(f"Cropped to: {img.size[0]}x{img.size[1]}")
 
 img.save(output_path)
