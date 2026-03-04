@@ -5,7 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dawn Games — Mobile Games Studio</title>
     <meta name="description" content="Dawn Games — indie mobile game studio. Idle clickers, tapping games, and more.">
-    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dawngamesapp.com">
+    <meta property="og:title" content="Dawn Games — Mobile Games Studio">
+    <meta property="og:description" content="Indie mobile studio. We make games that are actually fun to play. Free to play, no pay-to-win.">
+    <meta property="og:image" content="https://dawngamesapp.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dawn Games — Mobile Games Studio">
+    <meta name="twitter:description" content="Indie mobile studio. We make games that are actually fun to play.">
+    <meta name="twitter:image" content="https://dawngamesapp.com/og-image.png">
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0a0a0c">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
@@ -385,6 +408,63 @@
             margin-top: 1rem;
         }
 
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
         /* Mobile */
         @media (max-width: 600px) {
             nav { padding: 1rem 1.2rem; }
@@ -415,12 +495,12 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-dawn-icon"><img src="logo.png" alt="Dawn Games Logo"></div>
-        <h1 class="hero-title">
+        <div class="hero-dawn-icon scale-in"><img src="logo.png" alt="Dawn Games Logo"></div>
+        <h1 class="hero-title fade-in">
             <span class="gradient">Dawn</span>Games
         </h1>
-        <p class="hero-subtitle">Indie mobile studio. We make games that are actually fun to play.</p>
-        <div class="hero-stats">
+        <p class="hero-subtitle fade-in">Indie mobile studio. We make games that are actually fun to play.</p>
+        <div class="hero-stats stagger-children">
             <div class="stat">
                 <div class="stat-num">2</div>
                 <div class="stat-label">Games</div>
@@ -440,10 +520,10 @@
 
     <!-- GAMES -->
     <section class="games-section" id="games">
-        <div class="section-label">Our Games</div>
-        <h2 class="section-title">Built for tapping addicts & hacker wannabes</h2>
+        <div class="section-label fade-in">Our Games</div>
+        <h2 class="section-title fade-in">Built for tapping addicts & hacker wannabes</h2>
 
-        <div class="games-grid">
+        <div class="games-grid stagger-children">
 
             <!-- DARKNET IDLE -->
             <a href="darknet-idle.html" class="game-card">
@@ -502,17 +582,17 @@
 
     <!-- ABOUT -->
     <section class="about-section" id="about">
-        <div class="section-label">About</div>
-        <h2 class="section-title">Who we are</h2>
-        <p class="about-text">Dawn Games is an indie mobile studio focused on making games that feel good to play. No bloat, no pay-to-win walls, no corporate nonsense. Just games built by someone who actually plays them.</p>
+        <div class="section-label fade-in">About</div>
+        <h2 class="section-title fade-in">Who we are</h2>
+        <p class="about-text fade-in">Dawn Games is an indie mobile studio focused on making games that feel good to play. No bloat, no pay-to-win walls, no corporate nonsense. Just games built by someone who actually plays them.</p>
     </section>
 
     <div class="divider"></div>
 
     <!-- PRIVACY POLICY -->
     <section id="privacy" style="max-width: 800px; margin: 0 auto;">
-        <div class="section-label">Legal</div>
-        <h2 class="section-title">Privacy Policy</h2>
+        <div class="section-label fade-in">Legal</div>
+        <h2 class="section-title fade-in">Privacy Policy</h2>
         <div style="line-height: 1.8; color: var(--text-dim); font-size: 0.9rem;">
             <p><strong style="color: var(--text);">Last updated:</strong> February 19, 2026<br><strong style="color: var(--text);">Developer:</strong> Dawn Games LLC</p>
 
@@ -567,6 +647,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+// Scroll animations via Intersection Observer
+const animatedEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .stagger-children');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Only animate once
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+});
+
+animatedEls.forEach(el => observer.observe(el));
 </script>
 
 </body>
