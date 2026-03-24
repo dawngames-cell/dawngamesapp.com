@@ -105,7 +105,13 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+
+        .nav-links::-webkit-scrollbar { display: none; }
 
         .nav-links a {
             font-size: 0.9rem;
