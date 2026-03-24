@@ -618,7 +618,7 @@
     <section id="suggest" style="max-width: 600px; margin: 0 auto; padding: 6rem 2rem;">
         <div class="section-label fade-in">Talk to Us</div>
         <h2 class="section-title fade-in">Suggestion Box</h2>
-        <p style="text-align: center; color: var(--text-dim); margin-bottom: 2rem; font-size: 0.95rem;">Got an idea, feedback, or just want to say what's up? Drop it here — it goes straight to our inbox.</p>
+        <p style="text-align: center; color: var(--text-dim); margin-bottom: 2rem; font-size: 0.95rem;">Got an idea, feedback, or just want to say what's up? Drop it here — it goes straight to our inbox. Want us to get back to you? Leave your contact info and we'll reach out.</p>
         <form action="https://formsubmit.co/dawngames@dawngamesapp.com" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
             <input type="hidden" name="_subject" value="New Suggestion from dawngamesapp.com">
             <input type="hidden" name="_captcha" value="false">
@@ -636,6 +636,17 @@
                 transition: border-color 0.2s;
             ">
             <input type="text" name="subject" placeholder="Subject" required style="
+                padding: 1rem 1.2rem;
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s;
+            ">
+            <input type="text" name="contact" placeholder="Email or phone (optional — only if you want to hear back)" style="
                 padding: 1rem 1.2rem;
                 background: var(--bg-card);
                 border: 1px solid var(--border);
