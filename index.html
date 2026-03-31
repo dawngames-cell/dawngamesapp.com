@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dawn Games — Mobile Games Studio</title>
-    <meta name="description" content="Dawn Games — indie mobile game studio. Idle clickers, tapping games, and more.">
+    <meta name="description" content="Dawn Games — indie mobile game studio. Puzzle games, arcade stacking, and more.">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dawngamesapp.com">
     <meta property="og:title" content="Dawn Games — Mobile Games Studio">
-    <meta property="og:description" content="Indie mobile studio. We make games that are actually fun to play. Free to play, no pay-to-win.">
+    <meta property="og:description" content="Indie mobile studio. We make games that are actually fun to play. Play Block Drop DG now!">
     <meta property="og:image" content="https://dawngamesapp.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -105,7 +105,13 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+
+        .nav-links::-webkit-scrollbar { display: none; }
 
         .nav-links a {
             font-size: 0.9rem;
@@ -483,10 +489,11 @@
 <!-- NAV -->
 <nav>
     <div class="nav-logo"><span>Dawn</span>Games</div>
-    <ul class="nav-links">
+    <ul class="nav-links" style="margin-left: 2rem;">
         <li><a href="#games">Games</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#suggest">Suggestions</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
@@ -499,7 +506,7 @@
         <h1 class="hero-title fade-in">
             <span class="gradient">Dawn</span>Games
         </h1>
-        <p class="hero-subtitle fade-in">Indie mobile studio. We make games that are actually fun to play.</p>
+        <p class="hero-subtitle fade-in">We build what we'd play. If we wouldn't download it, we wouldn't ship it. Welcome to Dawn Games.</p>
         <div class="hero-stats stagger-children">
             <div class="stat">
                 <div class="stat-num">2</div>
@@ -521,20 +528,22 @@
     <!-- GAMES -->
     <section class="games-section" id="games">
         <div class="section-label fade-in">Our Games</div>
-        <h2 class="section-title fade-in">Built for tapping addicts & hacker wannabes</h2>
+        <h2 class="section-title fade-in">Built for puzzle addicts & high-score chasers</h2>
 
         <div class="games-grid stagger-children">
 
-            <!-- DARKNET IDLE -->
-            <a href="darknet-idle.html" class="game-card">
-                <div class="game-card-banner game-card-banner-darknet">
-                    <div class="game-banner-matrix">01001000 41 43 4B ₿₿₿ 00110101 HACK THE PLANET ΞΞΞ 01001000 BREACH DETECTED ◈◈◈ 10110001 CRYPTO MINED 01001000 41 43 4B ₿₿₿ 00110101 FIREWALL BYPASSED ΞΞΞ 01001000 ROOT ACCESS ◈◈◈ 10110001 EXPLOIT LOADED 01001000 DARKNET IDLE 00110101 SCRIPT KIDDIE 10110001 SATOSHI 01001000 41 43 4B</div>
-                    <div class="game-banner-title darknet-green">DARKNET IDLE</div>
+            <!-- BLOCK DROP DG -->
+            <a href="block-drop-dg.html" class="game-card">
+                <div class="game-card-banner" style="background: linear-gradient(135deg, #1a0a3e, #3d1a6e); padding: 0;">
+                    <img src="blockdrop-icon.png" alt="Block Drop DG" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="game-card-body">
-                    <div class="game-card-name">DARKNET IDLE</div>
-                    <div class="game-card-genre">Idle Clicker • Hacker Theme</div>
-                    <div class="game-card-desc">Hack the planet. Tap to mine $CRYPT0, build botnets, and climb from Script Kiddie to Satoshi. A satisfying sensory experience with haptic feedback, particle effects, and combo sounds — built for every kind of mind.</div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
+                        <div class="game-card-name">Block Drop DG</div>
+                        <span style="font-size: 0.7rem; color: var(--dawn-amber); font-weight: 700; background: rgba(255,170,51,0.1); border: 1px solid rgba(255,170,51,0.3); padding: 0.2rem 0.6rem; border-radius: 100px; letter-spacing: 0.05em;">MARCH 2026</span>
+                    </div>
+                    <div class="game-card-genre">Puzzle • Stacking • Arcade</div>
+                    <div class="game-card-desc">Stack blocks with precision. Land perfect drops to keep your tower growing, earn combos, unlock themes and backgrounds, and compete on the global leaderboard. Simple to learn, impossible to put down.</div>
                 </div>
                 <div class="game-card-footer">
                     <span class="game-status status-testing">◉ IN-TESTING</span>
@@ -542,32 +551,15 @@
                 </div>
             </a>
 
-            <!-- HACKER: DAY IN THE LIFE -->
-            <a href="hacker-life.html" class="game-card">
-                <div class="game-card-banner" style="background: linear-gradient(135deg, #030a06, #081a10);">
-                    <div class="game-banner-matrix" style="color: #33ff88;">root@hackbox:~$ hack target ███ ACCESS GRANTED ███ FBI HEAT: 67% ███ $2,400 earned ███ RENT DUE: 3 DAYS ███ scanning... ███ FIREWALL DETECTED ███ root@hackbox:~$ hack target ███</div>
-                    <div class="game-banner-title" style="color: #33ff88;">HACKER</div>
-                </div>
-                <div class="game-card-body">
-                    <div class="game-card-name">HACKER: Day in the Life</div>
-                    <div class="game-card-genre">3D Simulation • Hacker Theme</div>
-                    <div class="game-card-desc">Live the hacker life in 3D. Walk around your cyberpunk apartment, hack targets from your terminal, dodge FBI raids, mine crypto, and try to pay rent before you're evicted. Five unique hacking mini-games.</div>
-                </div>
-                <div class="game-card-footer">
-                    <span class="game-status status-testing">◉ IN-TESTING</span>
-                    <span class="game-link">View Game →</span>
-                </div>
-            </a>
-
-            <!-- COMING SOON -->
+            <!-- BLOCK DROP DG 2 -->
             <div class="game-card">
-                <div class="game-card-banner game-card-banner-coming">
-                    <div class="game-banner-title" style="color: var(--text-dim); font-family: Inter, sans-serif; font-size: 1.5rem; letter-spacing: 0.1em;">???</div>
+                <div class="game-card-banner" style="background: linear-gradient(135deg, #1a0a3e, #3d1a6e); padding: 0;">
+                    <img src="blockdrop2-icon.png" alt="Block Drop DG 2" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="game-card-body">
-                    <div class="game-card-name" style="color: var(--text-dim);">Next Game</div>
-                    <div class="game-card-genre">Coming Soon</div>
-                    <div class="game-card-desc">Something new is brewing. The Dawn Games universe keeps expanding. Stay tuned.</div>
+                    <div class="game-card-name">Block Drop DG 2</div>
+                    <div class="game-card-genre">Puzzle • Arcade • Sequel</div>
+                    <div class="game-card-desc">The sequel to Block Drop DG. New mechanics, new challenges, same addictive stacking gameplay — turned up to eleven. Details coming soon.</div>
                 </div>
                 <div class="game-card-footer">
                     <span class="game-status status-coming">COMING SOON</span>
@@ -584,7 +576,7 @@
     <section class="about-section" id="about">
         <div class="section-label fade-in">About</div>
         <h2 class="section-title fade-in">Who we are</h2>
-        <p class="about-text fade-in">Dawn Games is an indie mobile studio focused on making games that feel good to play. No bloat, no pay-to-win walls, no corporate nonsense. Just games built by someone who actually plays them.</p>
+        <p class="about-text fade-in">Dawn Games is a solo studio built from scratch. We don't have a marketing team or a growth strategy — we have a phone full of our own games and a habit of playing them too much. That's how we know they're ready.</p>
     </section>
 
     <div class="divider"></div>
@@ -597,7 +589,7 @@
             <p><strong style="color: var(--text);">Last updated:</strong> February 19, 2026<br><strong style="color: var(--text);">Developer:</strong> Dawn Games LLC</p>
 
             <h3 style="color: var(--text); font-size: 1.1rem; margin: 2rem 0 0.5rem;">Overview</h3>
-            <p>Dawn Games develops free-to-play mobile games (including Darknet Idle and Hacker: Day in the Life). This policy covers all games published by Dawn Games and explains what data is collected and how it's used.</p>
+            <p>Dawn Games develops free-to-play mobile games (including Block Drop DG). This policy covers all games published by Dawn Games and explains what data is collected and how it's used.</p>
 
             <h3 style="color: var(--text); font-size: 1.1rem; margin: 2rem 0 0.5rem;">Advertising</h3>
             <p>Our games use Google AdMob to display ads. AdMob may collect device advertising ID, IP address (anonymized), general location (country/region level), and app usage data for ad personalization.</p>
@@ -605,6 +597,9 @@
 
             <h3 style="color: var(--text); font-size: 1.1rem; margin: 2rem 0 0.5rem;">Game Data</h3>
             <p>Game progress is stored <strong>locally on your device only</strong>. We do not collect, store, or transmit any personal information. No account creation or login required. No names, emails, or phone numbers collected.</p>
+
+            <h3 style="color: var(--text); font-size: 1.1rem; margin: 2rem 0 0.5rem;">In-App Purchases</h3>
+            <p>Some of our games offer optional in-app purchases (e.g. virtual coins). All transactions are processed by Apple via StoreKit. We do not store or have access to your payment information. Purchases are non-refundable.</p>
 
             <h3 style="color: var(--text); font-size: 1.1rem; margin: 2rem 0 0.5rem;">Analytics</h3>
             <p>We do not use any analytics or tracking SDKs beyond what is included in AdMob.</p>
@@ -621,6 +616,78 @@
             <h3 style="color: var(--text); font-size: 1.1rem; margin: 2rem 0 0.5rem;">Contact</h3>
             <p>Questions? Contact us at: <strong style="color: var(--text);"><a href="mailto:dawngames@dawngamesapp.com" style="color: var(--dawn-orange);">dawngames@dawngamesapp.com</a></strong></p>
         </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SUGGESTIONS -->
+    <section id="suggest" style="max-width: 600px; margin: 0 auto; padding: 6rem 2rem;">
+        <div class="section-label fade-in">Talk to Us</div>
+        <h2 class="section-title fade-in">Suggestion Box</h2>
+        <p style="text-align: center; color: var(--text-dim); margin-bottom: 2rem; font-size: 0.95rem;">Got an idea, feedback, or just want to say what's up? Drop it here — it goes straight to our inbox. Want us to get back to you? Leave your contact info and we'll reach out.</p>
+        <form action="https://formsubmit.co/dawngames@dawngamesapp.com" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+            <input type="hidden" name="_subject" value="New Suggestion from dawngamesapp.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://dawngamesapp.com/?sent=true">
+            <input type="text" name="name" placeholder="Your Name" required style="
+                padding: 1rem 1.2rem;
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s;
+            ">
+            <input type="text" name="subject" placeholder="Subject" required style="
+                padding: 1rem 1.2rem;
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s;
+            ">
+            <input type="text" name="contact" placeholder="Email or phone (optional)" style="
+                padding: 1rem 1.2rem;
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s;
+            ">
+            <textarea name="message" placeholder="What's on your mind?" rows="5" required style="
+                padding: 1rem 1.2rem;
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                outline: none;
+                resize: vertical;
+                transition: border-color 0.2s;
+            "></textarea>
+            <button type="submit" style="
+                padding: 1rem 2rem;
+                background: linear-gradient(135deg, var(--dawn-orange), var(--dawn-amber));
+                border: none;
+                border-radius: 12px;
+                color: #000;
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.3s;
+            " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(255,107,43,0.4)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Send It</button>
+        </form>
     </section>
 
     <div class="divider"></div>
@@ -666,5 +733,6 @@ const observer = new IntersectionObserver((entries) => {
 animatedEls.forEach(el => observer.observe(el));
 </script>
 
+<script data-goatcounter="https://dawngamesapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

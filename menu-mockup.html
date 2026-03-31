@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 360px;
+  height: 640px;
+  background: linear-gradient(160deg, #1a0a3e 0%, #0d0620 40%, #0a0418 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating blocks */
+.block {
+  position: absolute;
+  border-radius: 6px;
+  opacity: 0.35;
+  transform: rotate(var(--rot));
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  padding: 16px 18px;
+  position: relative;
+  z-index: 10;
+}
+
+.coins {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: #ffdd44;
+  font-weight: 600;
+}
+
+.coin-icon {
+  width: 20px;
+  height: 20px;
+  background: #ffdd44;
+  border-radius: 50%;
+  border: 2px solid #cc9900;
+}
+
+.spacer { flex: 1; }
+
+.settings-btn {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+/* Center content */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+/* Glow bar */
+.glow-bar {
+  width: 300px;
+  height: 3px;
+  background: rgba(230, 80, 100, 0.15);
+  margin: 0 auto 8px;
+  border-radius: 2px;
+}
+
+.title-block {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 5px 12px rgba(240, 50, 75, 0.35), 0 0 30px rgba(240, 50, 75, 0.1);
+  line-height: 1.0;
+}
+
+.title-drop {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 5px 12px rgba(50, 130, 240, 0.35), 0 0 30px rgba(50, 130, 240, 0.1);
+  line-height: 1.0;
+  margin-top: 4px;
+}
+
+.best-row {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 24px;
+  color: #ffdd44;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(255, 220, 0, 0.25);
+}
+
+.best-trophy { font-size: 22px; }
+
+.play-btn {
+  margin-top: 50px;
+  background: linear-gradient(180deg, #f23850 0%, #cc1e30 100%);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 18px 60px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  box-shadow: 0 5px 12px rgba(240, 30, 60, 0.35), 0 12px 24px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.menu-btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.menu-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  min-width: 140px;
+  text-align: center;
+}
+
+/* Logo bottom right */
+.logo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2a1060, #4a2090);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  z-index: 10;
+  font-size: 8px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.1;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.logo .b { color: #ff4466; }
+.logo .d { color: #ffdd44; }
+.logo .dg { color: #44ccff; }
+</style>
+</head>
+<body>
+
+<!-- Floating blocks -->
+<div class="block" style="width:35px;height:35px;background:#ff4466;top:15%;left:8%;--rot:-12deg;"></div>
+<div class="block" style="width:28px;height:28px;background:#ffdd44;top:55%;left:85%;--rot:20deg;"></div>
+<div class="block" style="width:40px;height:40px;background:#44ccff;top:75%;left:12%;--rot:8deg;"></div>
+<div class="block" style="width:24px;height:24px;background:#44ff88;top:30%;left:78%;--rot:-5deg;"></div>
+<div class="block" style="width:32px;height:32px;background:#cc66ff;top:85%;left:55%;--rot:15deg;"></div>
+<div class="block" style="width:22px;height:22px;background:#ff8844;top:45%;left:5%;--rot:-20deg;"></div>
+<div class="block" style="width:30px;height:30px;background:#ff4466;top:65%;left:70%;--rot:10deg;"></div>
+<div class="block" style="width:26px;height:26px;background:#44ccff;top:20%;left:45%;--rot:-8deg;"></div>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="coins">
+    <div class="coin-icon"></div>
+    1,250
+  </div>
+  <div class="spacer"></div>
+  <div class="settings-btn">⚙️</div>
+</div>
+
+<!-- Center -->
+<div class="center">
+  <div class="glow-bar"></div>
+  <div class="title-block">BLOCK</div>
+  <div class="title-drop">DROP</div>
+  <div class="best-row">
+    <span class="best-trophy">🏆</span>
+    BEST: 47
+  </div>
+  <button class="play-btn">▶  PLAY</button>
+  <div class="menu-btns">
+    <div class="menu-btn">🛒  SHOP</div>
+    <div class="menu-btn">🏆  SCORES</div>
+  </div>
+</div>
+
+<!-- Logo -->
+<div class="logo">
+  <div><span class="b">BLOCK</span><br><span class="d">DROP</span><br><span class="dg">DG</span></div>
+</div>
+
+</body>
+</html>
