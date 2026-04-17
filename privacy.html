@@ -5,21 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — Dawn Games</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0a0a0c; color: #ccc; padding: 2rem; line-height: 1.8; }
-        .container { max-width: 700px; margin: 0 auto; }
-        h1 { color: #fff; font-size: 2rem; margin-bottom: 0.5rem; }
-        h2 { color: #fff; font-size: 1.1rem; margin: 2rem 0 0.5rem; }
-        p { margin-bottom: 1rem; font-size: 0.95rem; }
-        a { color: #ff6b2b; }
-        .meta { font-size: 0.85rem; color: #666; margin-bottom: 2rem; }
+
+        :root {
+            --accent: #ff6b35;
+            --bg: #0a0a0c;
+            --bg-card: #1a1a20;
+            --text: #f5f5f7;
+            --text-muted: #8e8e93;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .logo-dawn {
+            background: linear-gradient(135deg, var(--accent), #ffa366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--text); text-decoration: none; }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin: 0.5rem 0 1rem 1.5rem;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 6rem 1.5rem 3rem; }
+        }
     </style>
 </head>
 <body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo"><span class="logo-dawn">Dawn</span>Games</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </nav>
+</header>
+
 <div class="container">
     <h1>Privacy Policy</h1>
-    <p class="meta">Last updated: April 7, 2026 · Dawn Games</p>
+    <p class="meta">Last updated: April 7, 2026 · Dawn Games LLC</p>
 
     <h2>Overview</h2>
     <p>Dawn Games develops free-to-play mobile games (including Block Drop DG). This policy covers all games published by Dawn Games and explains what data is collected and how it's used.</p>
@@ -34,7 +153,7 @@
 
     <h2>Tournament Leaderboards</h2>
     <p>Some games (like Block Drop DG) feature weekly tournament leaderboards. If you participate, the following data is collected and stored on Google Firebase servers:</p>
-    <ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.8;">
+    <ul>
         <li><strong>Display name</strong> (chosen by you in-game)</li>
         <li><strong>Score</strong> (game performance data)</li>
         <li><strong>Device identifier</strong> (to track unique players)</li>
@@ -53,10 +172,12 @@
     <p>Our games are not directed at children under 13. We do not knowingly collect data from children.</p>
 
     <h2>Third-Party Services</h2>
-    <p>• <strong>Google AdMob</strong> — <a href="https://policies.google.com/privacy">Privacy Policy</a></p>
-    <p>• <strong>Google Firebase/Firestore</strong> — <a href="https://firebase.google.com/support/privacy">Privacy Policy</a></p>
-    <p>• <strong>Google User Messaging Platform (UMP)</strong> — Used to manage consent for ads and tracking.</p>
-    <p>• <strong>SKAdNetwork (iOS)</strong> — Apple's privacy-preserving ad attribution framework. No personal data is shared.</p>
+    <ul style="list-style: none; margin-left: 0;">
+        <li>• <strong>Google AdMob</strong> — <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
+        <li>• <strong>Google Firebase/Firestore</strong> — <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy Policy</a></li>
+        <li>• <strong>Google User Messaging Platform (UMP)</strong> — Used to manage consent for ads and tracking.</li>
+        <li>• <strong>SKAdNetwork (iOS)</strong> — Apple's privacy-preserving ad attribution framework. No personal data is shared.</li>
+    </ul>
 
     <h2>Data Retention</h2>
     <p><strong>Local game data:</strong> Stored on your device only. Uninstalling deletes all local data.</p>
@@ -65,5 +186,10 @@
     <h2>Contact</h2>
     <p>Questions? Contact us at: <a href="mailto:dawngames@dawngamesapp.com">dawngames@dawngamesapp.com</a></p>
 </div>
+
+<footer>
+    <p>© 2026 Dawn Games LLC. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
