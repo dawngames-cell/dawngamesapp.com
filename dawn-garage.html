@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dawn Garage — Project Management App</title>
-    <meta name="description" content="Organize your creative projects without the clutter. Built for makers.">
+    <title>Dawn Garage — Your Car's Health Score in Your Pocket</title>
+    <meta name="description" content="Track maintenance, scan VINs, check recalls, and monitor your vehicle's health score. Built for car owners who DIY.">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -12,21 +12,25 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- Theme color -->
-    <meta name="theme-color" content="#0a0a0c">
+    <meta name="theme-color" content="#1B2A4A">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --accent: #ff6b35;
+            --accent: #F5A623;
             --accent-2: #00d9ff;
+            --navy: #1B2A4A;
+            --navy-light: #243659;
             --bg: #0a0a0c;
-            --bg-elevated: #141418;
             --bg-card: #1a1a20;
             --text: #f5f5f7;
             --text-muted: #8e8e93;
             --border: rgba(255, 255, 255, 0.08);
+            --red: #E74C3C;
+            --green: #27AE60;
+            --yellow: #F39C12;
         }
 
         body {
@@ -63,7 +67,7 @@
         }
 
         .logo-dawn {
-            background: linear-gradient(135deg, var(--accent), #ffa366);
+            background: linear-gradient(135deg, #ff6b35, #ffa366);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -86,6 +90,7 @@
             text-align: center;
             padding: 8rem 2rem 4rem;
             position: relative;
+            background: linear-gradient(135deg, #0a0a0c 0%, #1B2A4A 100%);
         }
 
         .hero-glow {
@@ -93,10 +98,10 @@
             top: 20%;
             left: 50%;
             transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 217, 255, 0.2), transparent 60%);
-            filter: blur(100px);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.15), transparent 70%);
+            filter: blur(120px);
             pointer-events: none;
         }
 
@@ -111,18 +116,31 @@
             align-items: center;
             gap: 0.6rem;
             padding: 0.5rem 1.2rem;
-            background: rgba(0, 217, 255, 0.1);
-            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid rgba(245, 166, 35, 0.2);
             border-radius: 100px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--accent-2);
+            color: var(--accent);
             margin-bottom: 2rem;
+        }
+
+        .health-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background: rgba(245, 166, 35, 0.1);
+            border: 3px solid rgba(245, 166, 35, 0.3);
+            border-radius: 50%;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 10vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.03em;
@@ -130,7 +148,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            background: linear-gradient(135deg, var(--accent), #ffc266);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -143,42 +161,120 @@
             line-height: 1.7;
         }
 
-        .features {
-            max-width: 1100px;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: not-allowed;
+            border: none;
+            opacity: 0.6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #ffc266);
+            color: #000;
+        }
+
+        .features-section {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
         .feature-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 2.5rem;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .feature-card:hover {
             border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
+            transform: translateY(-8px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-icon {
-            width: 48px;
-            height: 48px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 217, 255, 0.1);
-            border-radius: 12px;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 16px;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
         .feature-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 0.8rem;
         }
@@ -187,6 +283,52 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.7;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-2);
+        }
+
+        .tech-stack {
+            background: var(--navy-light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .tech-stack h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tech-badge {
+            padding: 0.6rem 1.2rem;
+            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
         }
 
         footer {
@@ -198,8 +340,11 @@
         }
 
         @media (max-width: 768px) {
-            .features { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .features-section { padding: 4rem 1.5rem; }
             .hero { padding: 6rem 1.5rem 3rem; }
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -216,48 +361,98 @@
     <div class="hero-glow"></div>
     <div class="hero-content">
         <div class="status-badge">🔧 In Development</div>
-        <h1><span class="gradient-text">Dawn Garage</span></h1>
-        <p class="subtitle">Organize your creative projects without the clutter. Keep files, notes, and tasks in one place. Built for makers who need less chaos, more clarity.</p>
+        <div class="health-icon">🚗</div>
+        <h1>Your car's <span class="gradient-text">health score</span><br>in your pocket</h1>
+        <p class="subtitle">Track maintenance, scan VINs, check recalls, and save money on DIY repairs. Dawn Garage keeps your vehicle healthy without the dealership markup.</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" disabled>Coming Soon</button>
+        </div>
     </div>
 </section>
 
-<div class="features">
-    <div class="feature-card">
-        <div class="feature-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-2);">
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-        <h3 class="feature-title">Project Organization</h3>
-        <p class="feature-desc">Keep all your creative projects in one place. Files, notes, tasks, and references — organized the way you think.</p>
+<section class="features-section">
+    <div class="section-header">
+        <span class="section-tag">⚡ Key Features</span>
+        <h2>Everything you need to own<br>a car confidently</h2>
+        <p class="section-desc">Built for car owners who want to stay on top of maintenance without overpaying.</p>
     </div>
 
-    <div class="feature-card">
-        <div class="feature-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-2);">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Health Score System</h3>
+            <p class="feature-desc">Get a 0-100 health score for your vehicle based on maintenance status. Red = overdue, yellow = due soon, green = healthy. Know exactly where you stand at a glance.</p>
+            <span class="feature-tag">Real-time</span>
         </div>
-        <h3 class="feature-title">Developer-Friendly</h3>
-        <p class="feature-desc">Built for creators who code. Seamless file management, quick navigation, and no unnecessary bloat.</p>
-    </div>
 
-    <div class="feature-card">
-        <div class="feature-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-2);">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
+        <div class="feature-card">
+            <div class="feature-icon">📷</div>
+            <h3 class="feature-title">VIN Scanner</h3>
+            <p class="feature-desc">Point your camera at the VIN plate and let OCR do the work. No typing 17-character codes. Instant vehicle recognition and setup.</p>
+            <span class="feature-tag">Camera-based</span>
         </div>
-        <h3 class="feature-title">Quick Access</h3>
-        <p class="feature-desc">Jump into any project instantly. No endless folder drilling. Get to work faster.</p>
+
+        <div class="feature-card">
+            <div class="feature-icon">🚨</div>
+            <h3 class="feature-title">NHTSA Recall Checker</h3>
+            <p class="feature-desc">Official NHTSA recall database integration. Get instant alerts if your vehicle has any safety recalls. Stay safe, stay informed.</p>
+            <span class="feature-tag">Official API</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 class="feature-title">Money Saved Tracker</h3>
+            <p class="feature-desc">Track how much you save by doing maintenance yourself. Oil changes, filters, fluids — see your DIY savings add up over time.</p>
+            <span class="feature-tag">Budget-friendly</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">Pre-Purchase Evaluator</h3>
+            <p class="feature-desc">Buying a used car? Run the checklist before you commit. Inspection guide, red flags, and deal evaluation built-in.</p>
+            <span class="feature-tag">Used Car Helper</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3 class="feature-title">Maintenance Tracking</h3>
+            <p class="feature-desc">Mileage-based service schedules. Oil changes, tire rotations, brake pads — get alerts before things become problems. Never miss a service again.</p>
+            <span class="feature-tag">Smart Alerts</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⛽</div>
+            <h3 class="feature-title">Gas Tracker & Predictions</h3>
+            <p class="feature-desc">Log fill-ups and see fuel economy trends. Predict when you'll need gas next. Know your MPG, track your spending.</p>
+            <span class="feature-tag">Analytics</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💵</div>
+            <h3 class="feature-title">Cost Estimator</h3>
+            <p class="feature-desc">Estimate total cost of ownership before you buy. Annual maintenance, insurance, gas, depreciation — see the full picture.</p>
+            <span class="feature-tag">Planning Tool</span>
+        </div>
     </div>
-</div>
+</section>
+
+<section class="tech-stack">
+    <h3>Built with modern tech</h3>
+    <div class="tech-badges">
+        <span class="tech-badge">React Native</span>
+        <span class="tech-badge">Expo</span>
+        <span class="tech-badge">React Navigation</span>
+        <span class="tech-badge">AsyncStorage</span>
+        <span class="tech-badge">expo-camera</span>
+        <span class="tech-badge">NHTSA API</span>
+        <span class="tech-badge">iOS + Android</span>
+    </div>
+</section>
 
 <footer>
-    <p>Dawn Garage is currently in development. Check back soon.</p>
-    <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.3);">© 2026 Dawn Games LLC</p>
+    <p><strong>Dawn Garage</strong> is currently in development.</p>
+    <p style="margin-top: 0.5rem;">Target release: Q2 2026</p>
+    <p style="margin-top: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.3);">© 2026 Dawn Games LLC</p>
 </footer>
 
 </body>
