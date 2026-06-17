@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devlog — Dawn Upon Us | Dawn Games</title>
+<meta name="description" content="Updates on Dawn Upon Us as it's being built — the island, combat, multiplayer, and what's coming next.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="Dawn Upon Us — Devlog">
+<meta property="og:description" content="Updates on Dawn Upon Us as it's being built — the island, combat, multiplayer, and what's coming next.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dawngamesapp.com/devlog.html">
+<meta property="og:image" content="https://dawngamesapp.com/assets/hero_dawn_upon_us.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dawn Upon Us — Devlog">
+<meta name="twitter:description" content="Updates on Dawn Upon Us as it's being built — the island, combat, multiplayer, and what's coming next.">
+<meta name="twitter:image" content="https://dawngamesapp.com/assets/hero_dawn_upon_us.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-2:#121117;
+    --bg-3:#16151c;
+    --watch:#b22222;
+    --watch-deep:#7d1414;
+    --dawn:#5c7a3d;
+    --dawn-deep:#3a4a2b;
+    --gold:#c9a24b;
+    --paper:#e7e0cd;
+    --text:#e8e6e1;
+    --muted:#9a978f;
+    --line:rgba(255,255,255,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+    background:linear-gradient(180deg,rgba(10,10,12,.95),rgba(10,10,12,0));
+    backdrop-filter:blur(8px);
+  }
+  .logo{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:20px;letter-spacing:3px;text-transform:uppercase;
+  }
+  .logo .glow{color:var(--gold)}
+  .nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;align-items:flex-end;
+    padding:0 0 64px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background:url('assets/hero_dawn_upon_us.jpg') center 78%/cover no-repeat;
+    transform:scale(1.08);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(10,10,12,.55) 0%,rgba(10,10,12,.15) 35%,rgba(10,10,12,.75) 80%,var(--bg) 100%),
+      radial-gradient(ellipse at 70% 30%,rgba(178,34,34,.12),transparent 55%);
+  }
+  .hero-content{position:relative;z-index:2;width:100%}
+  .eyebrow{
+    font-family:'Special Elite',monospace;
+    font-size:12px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+  .hero h1{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(44px,9vw,104px);line-height:.92;
+    letter-spacing:1px;text-transform:uppercase;
+    max-width:14ch;margin-bottom:20px;
+    text-shadow:0 4px 40px rgba(0,0,0,.6);
+  }
+  .hero p.lede{
+    font-size:clamp(15px,2vw,19px);color:#d8d5cd;
+    max-width:52ch;margin-bottom:32px;line-height:1.55;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:14px;letter-spacing:2px;text-transform:uppercase;
+    padding:15px 30px;border:none;cursor:pointer;transition:all .2s;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-primary{background:var(--watch);color:#fff}
+  .btn-primary:hover{background:var(--watch-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .status-pill{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .status-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0}
+  .sec-head{margin-bottom:48px}
+  .sec-eyebrow{
+    font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--muted);margin-bottom:12px;
+  }
+  .sec-title{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(30px,5vw,52px);line-height:1;letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .sec-sub{color:var(--muted);max-width:56ch;margin-top:16px;font-size:16px}
+
+  /* ---------- THE WORLD (factions) ---------- */
+  .world{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .factions{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:760px){.factions{grid-template-columns:1fr}}
+  .faction{
+    position:relative;border:1px solid var(--line);overflow:hidden;
+    background:var(--bg-3);transition:transform .25s,border-color .25s;
+  }
+  .faction:hover{transform:translateY(-4px)}
+  .faction.watch:hover{border-color:var(--watch)}
+  .faction.dawn:hover{border-color:var(--dawn)}
+  .faction-img{aspect-ratio:3/4;overflow:hidden;position:relative}
+  .faction-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .faction:hover .faction-img img{transform:scale(1.04)}
+  .faction-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,12,.9))}
+  .faction-body{padding:24px 26px 28px;position:relative}
+  .faction-tag{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:8px;
+  }
+  .watch .faction-tag{color:var(--watch)}
+  .dawn .faction-tag{color:var(--dawn)}
+  .faction-name{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;
+    letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;
+  }
+  .faction-desc{color:var(--muted);font-size:14.5px;margin-bottom:20px;min-height:66px}
+  .faction-link{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;
+    letter-spacing:2px;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
+  }
+  .watch .faction-link{color:var(--watch)}
+  .dawn .faction-link{color:var(--dawn)}
+  .faction-link:hover{gap:14px}
+
+  /* ---------- MORE GAMES ---------- */
+  .games-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:680px){.games-grid{grid-template-columns:1fr}}
+  .game-card{
+    border:1px solid var(--line);background:var(--bg-2);padding:30px 28px;
+    transition:transform .25s,border-color .25s;display:flex;flex-direction:column;
+  }
+  .game-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .game-status{
+    font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;padding:4px 10px;border:1px solid var(--line);
+    display:inline-block;width:fit-content;margin-bottom:16px;color:var(--muted);
+  }
+  .game-status.live{color:#7fc97f;border-color:rgba(127,201,127,.4)}
+  .game-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .game-meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .game-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;flex:1}
+  .game-card .faction-link{color:var(--gold)}
+
+  /* ---------- STUDIO STRIP ---------- */
+  .studio{background:var(--bg-2);border-top:1px solid var(--line)}
+  .studio-inner{max-width:760px;margin:0 auto;text-align:center}
+  .studio blockquote{
+    font-family:'Oswald',sans-serif;font-weight:500;
+    font-size:clamp(22px,4vw,36px);line-height:1.25;letter-spacing:.5px;
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .studio blockquote .gold{color:var(--gold)}
+  .studio p{color:var(--muted);font-size:16px;max-width:54ch;margin:0 auto}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line)}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
+  .foot-links{display:flex;gap:24px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .foot-links a:hover{color:var(--text)}
+  .copyright{color:var(--muted);font-size:12px;letter-spacing:1px;margin-top:32px}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .hero-bg{transform:none}
+  }
+
+  /* ---------- DEVLOG ---------- */
+  .devlog-top{padding:150px 0 56px}
+  .devlog-title{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(36px,7vw,72px);line-height:1;letter-spacing:1px;
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .devlog-intro{color:var(--muted);font-size:18px;line-height:1.6;max-width:700px}
+  .devlog-entries{padding:8px 0 96px}
+  .devlog-entry{border-top:1px solid var(--line);padding:56px 0}
+  .devlog-entry:first-child{border-top:none;padding-top:0}
+  .entry-num{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);display:inline-block;
+  }
+  .entry-date{
+    font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1px;
+    color:var(--muted);margin-left:14px;
+  }
+  .entry-title{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(28px,4vw,44px);line-height:1.05;letter-spacing:1px;
+    text-transform:uppercase;margin-top:8px;
+  }
+  .entry-body{max-width:720px;margin-top:24px}
+  .entry-body p{font-size:17px;line-height:1.7;color:var(--text)}
+  .entry-body p+p{margin-top:16px}
+  .devlog-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+  .devlog-shots img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line)}
+  @media(max-width:680px){.devlog-shots{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">DAWN<span class="glow">GAMES</span></div>
+  <div class="nav-links">
+    <a href="index.html#flagship">Dawn Upon Us</a>
+    <a href="index.html#world">The World</a>
+    <a href="index.html#games">Games</a>
+    <a href="devlog.html">Devlog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- DEVLOG TOP -->
+  <section class="devlog-top">
+    <div class="wrap">
+      <div class="eyebrow">DEV LOG</div>
+      <h1 class="devlog-title">Building in the Open</h1>
+      <p class="devlog-intro">This is the build, as it happens. No marketing polish, no hidden roadmap — what got done, in the order it got done.</p>
+    </div>
+  </section>
+
+  <!-- DEVLOG ENTRIES -->
+  <section class="devlog-entries">
+    <div class="wrap">
+
+      <!-- DEVLOG ENTRY TEMPLATE — copy the article below to add new entries.
+           Newest at top. Update the entry-num, optional date, title, body paragraphs,
+           and (when you have them) drop screenshots into /assets/devlog/ and
+           uncomment the .devlog-shots block.
+      -->
+
+      <article class="devlog-entry">
+        <header class="entry-head">
+          <div class="entry-num">Update 06</div>
+          <!-- Add a date when you want one:
+               <time class="entry-date" datetime="YYYY-MM-DD">Month D, YYYY</time>
+          -->
+          <h2 class="entry-title">The island, end to end</h2>
+        </header>
+        <div class="entry-body">
+          <p>The full island is in. Suburb, the big city, the port and docks, the military base, farmland, an airfield, rail lines, beaches, and the ridgeline that walls the whole thing in. There's even a second landmass offshore — that's for later. For now, the world you'll be surviving on exists as one connected place instead of a pile of separate test scenes.</p>
+        </div>
+        <!-- Screenshots: drop files in /assets/devlog/, then uncomment.
+             Recommended size 1600x900. Filenames suggested below.
+        <div class="devlog-shots">
+          <img src="assets/devlog/devlog_06_island_topdown.jpg" alt="Top-down view of the full island">
+          <img src="assets/devlog/devlog_06_city_farmland.jpg" alt="Wide shot of the city and farmland">
+        </div>
+        -->
+      </article>
+
+      <article class="devlog-entry">
+        <header class="entry-head">
+          <div class="entry-num">Update 05</div>
+          <!-- Add a date when you want one:
+               <time class="entry-date" datetime="YYYY-MM-DD">Month D, YYYY</time>
+          -->
+          <h2 class="entry-title">Shooting works</h2>
+        </header>
+        <div class="entry-body">
+          <p>First real combat test. There's a weapon in your hands, it fires, and it does damage. Set up a training dummy with a health system to prove it out — shot it from 100 down to nothing and the numbers tracked the whole way. Not final art or balance, but the core loop is real now: aim, fire, it matters.</p>
+        </div>
+        <!-- Screenshots: drop files in /assets/devlog/, then uncomment.
+             Recommended size 1600x900. Filenames suggested below.
+        <div class="devlog-shots">
+          <img src="assets/devlog/devlog_05_dummy_75.jpg" alt="Training dummy at 75% health during a combat test">
+          <img src="assets/devlog/devlog_05_dummy_25.jpg" alt="Training dummy at 25% health during a combat test">
+        </div>
+        -->
+      </article>
+
+      <article class="devlog-entry">
+        <header class="entry-head">
+          <div class="entry-num">Update 04</div>
+          <!-- Add a date when you want one:
+               <time class="entry-date" datetime="YYYY-MM-DD">Month D, YYYY</time>
+          -->
+          <h2 class="entry-title">Under the hood</h2>
+        </header>
+        <div class="entry-body">
+          <p>Less to show in pictures, but this was the big one. The core scripting and game systems are in — spawning, the framework the whole game runs on, and the multiplayer foundation so this can be played with friends, not just alone. What's left here isn't building the systems, it's placing the pieces: spawn points and patrol routes across the map. The hard part's done.</p>
+        </div>
+        <!-- Screenshots: drop files in /assets/devlog/, then uncomment.
+             Recommended size 1600x900. Filenames suggested below.
+        <div class="devlog-shots">
+          <img src="assets/devlog/devlog_04_systems.jpg" alt="Core game systems in the editor">
+        </div>
+        -->
+      </article>
+
+      <article class="devlog-entry">
+        <header class="entry-head">
+          <div class="entry-num">Update 03</div>
+          <!-- Add a date when you want one:
+               <time class="entry-date" datetime="YYYY-MM-DD">Month D, YYYY</time>
+          -->
+          <h2 class="entry-title">Movement</h2>
+        </header>
+        <div class="entry-body">
+          <p>The character walks, runs, and idles. It's animated and it feels like a person moving through the world instead of a floating camera. I'm still reworking parts of it — not fully happy yet — but it's in and it's being refined.</p>
+        </div>
+        <!-- Screenshots: drop files in /assets/devlog/, then uncomment.
+             Recommended size 1600x900. Filenames suggested below.
+        <div class="devlog-shots">
+          <img src="assets/devlog/devlog_03_movement.jpg" alt="Character movement and animation">
+        </div>
+        -->
+      </article>
+
+      <article class="devlog-entry">
+        <header class="entry-head">
+          <div class="entry-num">Update 02</div>
+          <!-- Add a date when you want one:
+               <time class="entry-date" datetime="YYYY-MM-DD">Month D, YYYY</time>
+          -->
+          <h2 class="entry-title">The military base (and where the silo went)</h2>
+        </header>
+        <div class="entry-body">
+          <p>I'd built an underground missile silo — two missile chambers, a control room, an armory, the works. Then I made a call: it didn't belong here yet. So I cut it from this build and folded the effort into a bigger, better military base instead. The silo isn't gone — it's coming back later, across the bridge, as part of a much larger piece of the world down the road. Sometimes the honest move is admitting something's in the wrong place and moving it.</p>
+        </div>
+        <!-- Screenshots: drop files in /assets/devlog/, then uncomment.
+             Recommended size 1600x900. Filenames suggested below.
+        <div class="devlog-shots">
+          <img src="assets/devlog/devlog_02_military_base.jpg" alt="The new military base">
+          <img src="assets/devlog/devlog_02_silo.jpg" alt="The underground missile silo">
+        </div>
+        -->
+      </article>
+
+      <article class="devlog-entry">
+        <header class="entry-head">
+          <div class="entry-num">Update 01</div>
+          <!-- Add a date when you want one:
+               <time class="entry-date" datetime="YYYY-MM-DD">Month D, YYYY</time>
+          -->
+          <h2 class="entry-title">Building the world, one place at a time</h2>
+        </header>
+        <div class="entry-body">
+          <p>The approach from the start: build the island piece by piece, as real places. The logging camp, the suburb, the little town, the church, the water treatment plant, forest cabins, the port. Each one gets a rough pass first, then a detail pass. Slow, but it means every corner of the map is somewhere, not filler.</p>
+        </div>
+        <!-- Screenshots: drop files in /assets/devlog/, then uncomment.
+             Recommended size 1600x900. Filenames suggested below.
+        <div class="devlog-shots">
+          <img src="assets/devlog/devlog_01_town_detail.jpg" alt="Detailed pass on the town">
+          <img src="assets/devlog/devlog_01_cityscape.jpg" alt="Wide cityscape view">
+        </div>
+        -->
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo">DAWN<span class="glow">GAMES</span></div>
+      <div class="foot-links">
+        <a href="index.html#flagship">Dawn Upon Us</a>
+        <a href="index.html#games">Games</a>
+        <a href="https://dawngamesapp.com/privacy.html">Privacy</a>
+        <a href="mailto:dawngames@dawngamesapp.com">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Dawn Games LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
