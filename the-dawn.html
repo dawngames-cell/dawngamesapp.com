@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dawn — Dawn Upon Us</title>
+<meta name="description" content="The Dawn — survivor's record. The resistance of Dawn Upon Us, passed hand to hand.">
+<meta name="theme-color" content="#0a0c08">
+<meta property="og:title" content="The Dawn — Dawn Upon Us">
+<meta property="og:description" content="They took our home. We'll take it back. Read the Dawn's record.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://dawngamesapp.com/assets/dawn_poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Special+Elite&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c08;
+    --bg-2:#10140c;
+    --dawn:#6b8f47;
+    --dawn-bright:#8fb05e;
+    --dawn-deep:#3a4a2b;
+    --gold:#c9a24b;
+    --paper:#e7e0cd;
+    --text:#e4e3da;
+    --muted:#979b8b;
+    --line:rgba(107,143,71,.20);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'Crimson Text',Georgia,serif;line-height:1.7;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+    background:linear-gradient(180deg,rgba(10,12,8,.96),rgba(10,12,8,0));
+    backdrop-filter:blur(8px);
+  }
+  .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;text-transform:uppercase}
+  .logo .glow{color:var(--gold)}
+  .back{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:color .2s;font-weight:500}
+  .back:hover{color:var(--text)}
+
+  .doc-hero{position:relative;min-height:78vh;display:flex;align-items:center;padding:120px 0 60px;overflow:hidden}
+  .doc-hero-bg{position:absolute;inset:0;background:url('assets/dawn_poster.jpg') center 30%/cover no-repeat}
+  .doc-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,8,.62),rgba(10,12,8,.45) 40%,rgba(10,12,8,.82) 75%,var(--bg))}
+  .doc-hero .wrap{position:relative;z-index:2}
+  .classification{
+    font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px;
+  }
+  .classification::before{content:"";width:32px;height:1px;background:var(--gold)}
+  .doc-hero h1{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(48px,11vw,120px);
+    line-height:.9;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;
+    text-shadow:0 4px 40px rgba(0,0,0,.7);
+  }
+  .doc-hero .tagline{font-family:'Oswald',sans-serif;font-weight:500;font-size:clamp(15px,2.4vw,20px);letter-spacing:3px;text-transform:uppercase;color:var(--paper)}
+
+  .stamp-bar{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
+  .stamp-bar .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .stamp-bar .gold{color:var(--gold)}
+
+  article{padding:70px 0 40px}
+  .lede{
+    font-size:clamp(18px,2.6vw,23px);line-height:1.55;color:var(--paper);
+    border-left:3px solid var(--gold);padding-left:22px;margin-bottom:54px;font-style:italic;
+  }
+  h2{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(24px,4vw,34px);
+    letter-spacing:1px;text-transform:uppercase;margin:54px 0 16px;
+    padding-bottom:10px;border-bottom:2px solid var(--dawn);display:inline-block;
+  }
+  article p{font-size:17px;margin:16px 0;color:#ddd9cd}
+  article p em{color:var(--dawn-bright);font-style:italic;font-weight:600}
+  .pull{
+    font-family:'Crimson Text',serif;font-style:italic;
+    font-size:clamp(19px,3.2vw,27px);line-height:1.4;text-align:center;color:var(--dawn-bright);
+    margin:48px auto;padding:28px 20px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);max-width:90%;
+  }
+  figure{margin:44px 0}
+  figure img{width:100%;border:5px solid #16190f;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+  figure.center img{max-width:56%;margin:0 auto}
+  figcaption{font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:12px}
+  .scrawl{
+    font-family:'Special Elite',monospace;font-size:13.5px;line-height:1.7;
+    background:rgba(107,143,71,.08);border-left:3px solid var(--dawn);padding:18px 22px;margin:40px 0;color:#cfccc0;
+  }
+  .slogans{margin:40px 0}
+  .slogans-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-top:18px}
+  @media(max-width:560px){.slogans-grid{grid-template-columns:1fr}}
+  .slogans-grid div{
+    font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;letter-spacing:1px;text-transform:uppercase;
+    padding:10px 14px;border-left:3px solid var(--gold);background:rgba(255,255,255,.02);color:var(--paper);
+  }
+
+  .foot-cta{background:var(--bg-2);border-top:1px solid var(--line);padding:64px 0;text-align:center}
+  .foot-cta h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(22px,4vw,34px);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:var(--paper)}
+  .foot-cta p{color:var(--muted);margin-bottom:28px;font-size:16px}
+  .cross-link{
+    display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;border:1px solid var(--line);
+    color:#b22222;transition:all .2s;
+  }
+  .cross-link:hover{border-color:#b22222;transform:translateY(-2px)}
+  .home-link{display:block;text-align:center;padding:30px 0;color:var(--muted);font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+  .home-link:hover{color:var(--text)}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">DAWN<span class="glow">GAMES</span></a>
+  <a href="index.html" class="back">← Back to Studio</a>
+</nav>
+
+<header class="doc-hero">
+  <div class="doc-hero-bg"></div>
+  <div class="wrap">
+    <div class="classification">Found Copy &nbsp;&bull;&nbsp; Copy It Again &nbsp;&bull;&nbsp; Pass It On</div>
+    <h1>The Dawn</h1>
+    <div class="tagline">Freedom. Unity. Tomorrow.</div>
+  </div>
+</header>
+
+<div class="stamp-bar">
+  <div class="wrap">
+    <span>No Headquarters</span>
+    <span>No General</span>
+    <span class="gold">Morning Always Comes</span>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+    <p class="lede">If you're holding this, someone trusted you. That's not nothing anymore. Read it once, learn it, then move it along or burn it. They search for paper now.</p>
+
+    <h2>What it was like before</h2>
+    <p>You probably remember. If you're young, ask someone who does.</p>
+    <p>The docks ran loud every morning. The mill never stopped. Kids walked to school without papers. The power went out sometimes and we complained about it like it was the worst thing in the world. We didn't know. God, we didn't know how good <em>the worst thing in the world</em> used to be.</p>
+    <p>It wasn't perfect. It was ours. Nobody asked your name at a checkpoint to let you walk to your own mother's house.</p>
+
+    <h2>How they took it</h2>
+    <p>Slow. That's the part nobody believes until they've lived it. Nobody kicked the door in on day one.</p>
+    <p>First it was jobs. Then it was cameras, "for our safety." Then a curfew, "just for a while." Each thing alone, you could live with. That was the trick. By the time it was bad enough to fight, fighting was already treason.</p>
+    <p>They never conquered us. We <em>agreed</em> to it, one reasonable little step at a time, until there was nothing left to agree to.</p>
+
+    <figure class="center">
+      <img src="assets/dawn_tall.jpg" alt="The island belongs to us. We will take it back." loading="lazy">
+      <figcaption>Painted over their notices — seen across the sectors</figcaption>
+    </figure>
+
+    <h2>Where we came from</h2>
+    <p>We weren't soldiers. Most of us still aren't.</p>
+    <p>It started small. A fisherman who hid fuel from a patrol. A mechanic who kept fixing trucks for families who weren't allowed to travel. A teacher who buried the real books in her yard so the kids would know what was taken. An old soldier who showed scared people how to not be scared.</p>
+    <p>Nobody founded us. There's no headquarters. There's no general. That's our strength and they can't understand it — you can't behead a thing that has no head. Burn one camp and another lights its fire that night.</p>
+
+    <h2>The name</h2>
+    <p>Somebody said it around a fire, back in the bad winter. <em>Morning always comes.</em></p>
+    <p>We don't know who. Doesn't matter. It went mouth to mouth through the forests until it stopped being a sentence and started being a name.</p>
+    <p>We didn't pick it because we think we'll win. We picked it because the night doesn't get a vote on whether the sun comes up.</p>
+
+    <div class="pull">The night doesn't get a vote on whether the sun comes up.</div>
+
+    <h2>What we believe</h2>
+    <p>They want you obedient. We want you <em>free</em> — and free is harder, because free means you have to choose, and choosing is frightening when they've made fear the only currency left.</p>
+    <p>They built walls and called it safety. We keep fires and call it home.</p>
+    <p>They watch. Fine. Let them. A camera can see a man walk into the woods. It can't see what he decides while he's in there.</p>
+
+    <h2>What you can do</h2>
+    <p>You don't have to carry a rifle. Most of us don't, most days.</p>
+    <p>Hide a neighbor. Move a message. Feed someone who's hungrier than you. Remember a name they wanted forgotten. Teach a kid the real history. Paint over one of their posters and let them spend the morning scrubbing it.</p>
+    <p>Every small thing is a brick. We are building something they can't see yet.</p>
+
+    <figure>
+      <img src="assets/dawn_strip.jpg" alt="The Dawn propaganda series" loading="lazy">
+      <figcaption>Hand-pressed and posted by cells across the island</figcaption>
+    </figure>
+
+    <h2>What to do when it's hard</h2>
+    <p>It will be. Camps fall. People you love will be taken, and some won't come back, and there will be nights the whole thing feels like a story we tell ourselves to keep from freezing.</p>
+    <p>Keep going anyway. Not because we're sure. Because surrender is the only guaranteed way to lose.</p>
+
+    <div class="scrawl">
+      Found painted over their banners, three sectors this month alone:<br>
+      "THEY TOOK OUR HOME. WE'LL TAKE IT BACK." &nbsp;—&nbsp; "WE REMEMBER." &nbsp;—&nbsp; "GOOD. LET THEM WATCH."
+    </div>
+
+    <p>For a lot of us, that's what The Dawn really is. Not revenge. Not war. Not politics. Just the belief that one day, when the fighting is over, the island belongs to its people again. And when that day comes — the Dawn will finally arrive.</p>
+
+    <div class="slogans">
+      <h2>What we say to each other</h2>
+      <div class="slogans-grid">
+        <div>The Dawn Is Coming.</div>
+        <div>Morning Always Comes.</div>
+        <div>Rise. Resist. Reclaim.</div>
+        <div>We Remember.</div>
+        <div>Build. Defend. Survive.</div>
+        <div>We Fight For Each Other.</div>
+        <div>Hope Lives Here.</div>
+        <div>The Island Belongs To Us.</div>
+      </div>
+    </div>
+
+    <div class="pull">They will never own the sunrise.</div>
+  </div>
+</article>
+
+<section class="foot-cta">
+  <div class="wrap">
+    <h3>They tell it differently.</h3>
+    <p>The Watch keeps an official record of how the island was "saved." Read it in their own words.</p>
+    <a href="the-watch.html" class="cross-link">Read The Watch's Record →</a>
+  </div>
+</section>
+
+<a href="index.html" class="home-link">← Return to Dawn Games</a>
+
+</body>
+</html>

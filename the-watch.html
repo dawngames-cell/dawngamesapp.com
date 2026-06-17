@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Watch — Dawn Upon Us</title>
+<meta name="description" content="The Watch — official historical record. The occupying force of Dawn Upon Us, in their own words.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="The Watch — Dawn Upon Us">
+<meta property="og:description" content="They arrived promising order, and never left. Read the Watch's official record.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://dawngamesapp.com/assets/watch_poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Special+Elite&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0807;
+    --bg-2:#140e0d;
+    --watch:#b22222;
+    --watch-bright:#d6342f;
+    --watch-deep:#7d1414;
+    --paper:#d8d2c4;
+    --text:#e6e1da;
+    --muted:#9c9489;
+    --line:rgba(178,34,34,.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'Crimson Text',Georgia,serif;line-height:1.7;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+    background:linear-gradient(180deg,rgba(10,8,7,.96),rgba(10,8,7,0));
+    backdrop-filter:blur(8px);
+  }
+  .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;text-transform:uppercase}
+  .logo .glow{color:var(--watch)}
+  .back{
+    font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);transition:color .2s;font-weight:500;
+  }
+  .back:hover{color:var(--text)}
+
+  /* HERO BANNER */
+  .doc-hero{
+    position:relative;min-height:78vh;display:flex;align-items:center;
+    padding:120px 0 60px;overflow:hidden;
+  }
+  .doc-hero-bg{
+    position:absolute;inset:0;
+    background:url('assets/watch_poster.jpg') center 22%/cover no-repeat;
+  }
+  .doc-hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,8,7,.7),rgba(10,8,7,.55) 40%,rgba(10,8,7,.85) 75%,var(--bg));
+  }
+  .doc-hero .wrap{position:relative;z-index:2}
+  .classification{
+    font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--watch-bright);margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .classification::before{content:"";width:32px;height:1px;background:var(--watch-bright)}
+  .doc-hero h1{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(48px,11vw,120px);line-height:.9;letter-spacing:2px;
+    text-transform:uppercase;margin-bottom:18px;
+    text-shadow:0 4px 40px rgba(0,0,0,.7);
+  }
+  .doc-hero .tagline{
+    font-family:'Oswald',sans-serif;font-weight:500;font-size:clamp(15px,2.4vw,20px);
+    letter-spacing:3px;text-transform:uppercase;color:var(--paper);
+  }
+
+  /* STAMP BAR */
+  .stamp-bar{
+    background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .stamp-bar .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);}
+  .stamp-bar .red{color:var(--watch)}
+
+  /* LORE BODY */
+  article{padding:70px 0 40px}
+  .lede{
+    font-size:clamp(18px,2.6vw,23px);line-height:1.55;color:var(--paper);
+    border-left:3px solid var(--watch);padding-left:22px;margin-bottom:54px;font-style:italic;
+  }
+  .lede::first-letter{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:1em;color:var(--watch);font-style:normal;
+  }
+  h2{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(24px,4vw,34px);
+    letter-spacing:1px;text-transform:uppercase;margin:54px 0 16px;
+    padding-bottom:10px;border-bottom:2px solid var(--watch);display:inline-block;
+  }
+  article p{font-size:17px;margin:16px 0;color:#ddd7cf}
+  article p em{color:var(--watch-bright);font-style:italic}
+  .pull{
+    font-family:'Oswald',sans-serif;font-weight:500;text-transform:uppercase;
+    font-size:clamp(20px,3.4vw,30px);letter-spacing:1px;line-height:1.3;
+    text-align:center;color:var(--watch-bright);
+    margin:48px auto;padding:28px 20px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:90%;
+  }
+  figure{margin:44px 0}
+  figure img{width:100%;border:5px solid #1c1412;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+  figure.center img{max-width:62%;margin:0 auto}
+  figcaption{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--muted);text-align:center;margin-top:12px;
+  }
+  .notice{
+    font-family:'Special Elite',monospace;font-size:13.5px;line-height:1.7;
+    background:rgba(178,34,34,.08);border-left:3px solid var(--watch);
+    padding:18px 22px;margin:40px 0;color:#cfc7bd;
+  }
+  .slogans{margin:40px 0}
+  .slogans-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-top:18px}
+  @media(max-width:560px){.slogans-grid{grid-template-columns:1fr}}
+  .slogans-grid div{
+    font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;letter-spacing:1px;
+    text-transform:uppercase;padding:10px 14px;border-left:3px solid var(--watch);
+    background:rgba(255,255,255,.02);color:var(--paper);
+  }
+
+  /* FOOT CTA */
+  .foot-cta{
+    background:var(--bg-2);border-top:1px solid var(--line);padding:64px 0;text-align:center;
+  }
+  .foot-cta h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(22px,4vw,34px);
+    letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:var(--paper)}
+  .foot-cta p{color:var(--muted);margin-bottom:28px;font-size:16px}
+  .cross-link{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:2px;
+    text-transform:uppercase;padding:15px 32px;border:1px solid var(--line);
+    color:#5c7a3d;transition:all .2s;
+  }
+  .cross-link:hover{border-color:#5c7a3d;transform:translateY(-2px)}
+  .home-link{
+    display:block;text-align:center;padding:30px 0;color:var(--muted);
+    font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  }
+  .home-link:hover{color:var(--text)}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">DAWN<span class="glow">GAMES</span></a>
+  <a href="index.html" class="back">← Back to Studio</a>
+</nav>
+
+<header class="doc-hero">
+  <div class="doc-hero-bg"></div>
+  <div class="wrap">
+    <div class="classification">Official Historical Record &nbsp;&bull;&nbsp; Compliance Mandatory</div>
+    <h1>The Watch</h1>
+    <div class="tagline">Security. Order. Prosperity.</div>
+  </div>
+</header>
+
+<div class="stamp-bar">
+  <div class="wrap">
+    <span>Doc. No. OPO-001-A</span>
+    <span>Office of Public Order</span>
+    <span class="red">Obey. They Watch.</span>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+    <p class="lede">This record exists so that every resident of the island understands the truth of our shared history — not the rumors spread by agitators, but the facts. Read it carefully. Share it with your family. Those who understand the past do not repeat its mistakes.</p>
+
+    <h2>The Island Before</h2>
+    <p>Before The Watch, the island called itself free. In practice, it was fragile.</p>
+    <p>Power failed in the outer towns for days at a time. The docks were run by men who answered to no one. Crime in the city went unrecorded because there was no one to record it. The island's so-called government held elections, made promises, and let the roads crumble between them.</p>
+    <p>The people were not safe. They were simply unwatched. There is a difference, and they learned it too late.</p>
+
+    <h2>Our Arrival</h2>
+    <p>We came at the island's own invitation.</p>
+    <p>The government, unable to secure its most sensitive facility, contracted our organization to provide what it could not provide itself: order. We brought equipment. We brought wages. We brought the first reliable power the outer sectors had seen in a generation.</p>
+    <p>We asked for cooperation. The island gave it gladly. This is a matter of record, whatever you may now hear whispered.</p>
+
+    <figure>
+      <img src="assets/watch_seeall.jpg" alt="We see all. We hear all. We know all. — Watch surveillance notice" loading="lazy">
+      <figcaption>Public Notice — Posted in all Sector centers by order of the Office of Public Order</figcaption>
+    </figure>
+
+    <h2>The Transition</h2>
+    <p>It is said by some that The Watch "seized" the island. This is false.</p>
+    <p>The previous government was offered every opportunity to govern responsibly. It declined. When it became clear that its leaders cared more for their offices than for the people they had abandoned, those leaders stepped aside. Some left the island. Others chose not to be found. We do not pursue cowards.</p>
+    <p>In their absence, someone had to keep the lights on. Someone had to keep the food moving and the docks running and the children safe in their beds. We did not ask for that responsibility. We accepted it.</p>
+
+    <div class="pull">They were not safe. They were simply unwatched.</div>
+
+    <h2>The New Order</h2>
+    <p>What the disloyal call "restriction," the wise call "structure."</p>
+    <p>Checkpoints exist so that no stranger moves through your neighborhood unseen. Curfews exist so that the night belongs to the law-abiding, not the lawless. Cameras exist not to watch <em>you</em> — the honest citizen has nothing to fear from being seen — but to watch <em>over</em> you.</p>
+    <p>We hear the complaints. We weigh them against the silence of every family that now sleeps soundly. The arithmetic is not difficult.</p>
+
+    <h2>On the Subject of the Missing</h2>
+    <p>You will hear it said that people "disappear."</p>
+    <p>People relocate. People are reassigned. People who break faith with the island are removed from the company of those who keep it. This is not cruelty. It is hygiene.</p>
+    <p>A body removes what threatens it. So does a healthy society. To call this injustice is to call the immune system a murderer.</p>
+
+    <div class="notice">
+      NOTICE TO ALL CITIZENS: Report relocations, absences, and unregistered persons to your Sector Warden within 24 hours. Failure to report is itself a reportable offense. A safe island is a watched island.
+    </div>
+
+    <figure class="center">
+      <img src="assets/watch_order.jpg" alt="Order brings safety. Compliance brings prosperity." loading="lazy">
+      <figcaption>Sanctioned recruitment notice — Sector distribution</figcaption>
+    </figure>
+
+    <h2>On the Resistance</h2>
+    <p>There are those who hide in the forests and call themselves "The Dawn."</p>
+    <p>We will be plain: they are not freedom fighters. They are the residue of the old disorder — the smugglers, the malcontents, the ones who profited when no one was watching and now resent being watched. They romanticize a past that nearly killed this island. They offer you chaos and call it hope.</p>
+    <p>When you see their marks painted over our notices, do not be afraid. Be grateful. It means there is still something here worth defacing — something we built, that they could only ruin.</p>
+    <p>Report them. Not for our sake. For your neighbors'.</p>
+
+    <h2>The Future</h2>
+    <p>The island is safe now. It is fed, lit, and ordered. Children grow up never having known the fear their parents knew.</p>
+    <p>This is the gift The Watch gave the island. We ask only one thing in return, and we ask it of every citizen, every day: <em>Obey. They Watch.</em> And we always will.</p>
+
+    <div class="slogans">
+      <h2>Sanctioned Slogans</h2>
+      <div class="slogans-grid">
+        <div>Obey. They Watch.</div>
+        <div>Order Through Unity.</div>
+        <div>Compliance Is Protection.</div>
+        <div>Loyalty Is Freedom.</div>
+        <div>One Island. One Future.</div>
+        <div>A Safe Island Is A Watched Island.</div>
+        <div>The Watch Never Sleeps.</div>
+        <div>Security. Order. Prosperity.</div>
+      </div>
+    </div>
+
+    <div class="pull">Obey. They Watch.</div>
+  </div>
+</article>
+
+<section class="foot-cta">
+  <div class="wrap">
+    <h3>There is another account.</h3>
+    <p>The agitators call themselves The Dawn. Read what they tell each other in the dark.</p>
+    <a href="the-dawn.html" class="cross-link">Read The Dawn's Record →</a>
+  </div>
+</section>
+
+<a href="index.html" class="home-link">← Return to Dawn Games</a>
+
+</body>
+</html>
