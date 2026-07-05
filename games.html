@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Games — Dawn Games</title>
 <meta name="description" content="Co-op survival and puzzle games from a solo indie studio.">
-<meta name="theme-color" content="#0a0a0c">
+<meta name="theme-color" content="#030914">
 <meta property="og:title" content="Games — Dawn Games">
 <meta property="og:description" content="Co-op survival and puzzle games from a solo indie studio.">
 <meta property="og:type" content="website">
@@ -24,18 +24,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0a0c;
-    --bg-2:#121117;
-    --bg-3:#16151c;
-    --watch:#b22222;
-    --watch-deep:#7d1414;
-    --dawn:#5c7a3d;
-    --dawn-deep:#3a4a2b;
-    --gold:#c9a24b;
-    --paper:#e7e0cd;
+    --bg:#030914;
+    --bg-2:#0b1526;
+    --bg-3:#0f1b30;
+    --gold:#f5c46b;
+    --blue:#2594ff;
     --text:#e8e6e1;
-    --muted:#9a978f;
-    --line:rgba(255,255,255,.08);
+    --muted:#9aa4b2;
+    --line:rgba(255,255,255,.10);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -52,73 +48,31 @@
 
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
+  /* ---------- HEADER (shared with home) ---------- */
+  header{
+    height:90px;
+    padding:0 60px;
     display:flex;align-items:center;justify-content:space-between;
-    padding:16px 24px;
-    background:linear-gradient(180deg,rgba(10,10,12,.95),rgba(10,10,12,0));
-    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    background:rgba(3,9,20,0.9);
+    font-family:Arial,Helvetica,sans-serif;
   }
   .logo{
-    font-family:'Oswald',sans-serif;font-weight:700;
-    font-size:20px;letter-spacing:3px;text-transform:uppercase;
+    display:flex;align-items:center;gap:16px;
+    color:var(--gold);font-weight:bold;letter-spacing:6px;font-size:28px;
   }
-  .logo .glow{color:var(--gold)}
-  .nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:500}
-  .nav-links a{color:var(--muted);transition:color .2s}
-  .nav-links a:hover{color:var(--text)}
-  @media(max-width:640px){.nav-links{display:none}}
-
-  /* ---------- HERO (studio) ---------- */
-  .hero-hub{
-    position:relative;min-height:82vh;
-    display:flex;align-items:center;
-    padding:120px 0 88px;overflow:hidden;
+  .logo span{display:block;color:#fff}
+  header nav{display:flex;align-items:center;gap:45px}
+  header nav a{
+    color:#fff;text-decoration:none;font-size:15px;letter-spacing:2px;transition:.2s;
   }
-  .hero-hub-bg{
-    position:absolute;inset:0;
-    background:
-      radial-gradient(ellipse at 22% 24%,rgba(201,162,75,.16),transparent 55%),
-      radial-gradient(ellipse at 82% 72%,rgba(178,34,34,.12),transparent 58%),
-      linear-gradient(180deg,var(--bg-2) 0%,var(--bg) 100%);
-  }
-  .hero-hub-bg::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,transparent 60%,var(--bg) 100%);
-  }
-  .hero-hub-content{position:relative;z-index:2;width:100%}
-  .eyebrow{
-    font-family:'Special Elite',monospace;
-    font-size:12px;letter-spacing:4px;text-transform:uppercase;
-    color:var(--gold);margin-bottom:18px;
-    display:flex;align-items:center;gap:12px;
-  }
-  .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
-  .hero-hub h1{
-    font-family:'Oswald',sans-serif;font-weight:700;
-    font-size:clamp(52px,11vw,120px);line-height:.9;
-    letter-spacing:1px;text-transform:uppercase;
-    margin-bottom:22px;text-shadow:0 4px 40px rgba(0,0,0,.6);
-  }
-  .hero-hub p.lede{
-    font-size:clamp(16px,2.2vw,21px);color:#d8d5cd;
-    max-width:44ch;margin-bottom:34px;line-height:1.5;
-  }
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .btn{
-    font-family:'Oswald',sans-serif;font-weight:600;
-    font-size:14px;letter-spacing:2px;text-transform:uppercase;
-    padding:15px 30px;border:none;cursor:pointer;transition:all .2s;
-    display:inline-flex;align-items:center;gap:9px;
-  }
-  .btn-primary{background:var(--watch);color:#fff}
-  .btn-primary:hover{background:var(--watch-deep);transform:translateY(-2px)}
-  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  header nav a:hover, header nav a.active{color:var(--gold)}
+  .icons{display:flex;gap:20px;align-items:center}
+  .icons a{display:inline-flex;align-items:center}
+  .icons svg{width:26px;height:26px;display:block}
 
   /* ---------- SECTION SHELL ---------- */
-  section{padding:132px 0 96px}
+  section{padding:70px 0 96px}
   .sec-head{margin-bottom:48px}
   .sec-eyebrow{
     font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;
@@ -134,15 +88,15 @@
   /* ---------- FEATURED GAME ---------- */
   .featured{
     display:grid;grid-template-columns:1.15fr 1fr;
-    border:1px solid var(--line);background:var(--bg-2);overflow:hidden;
+    border:1px solid rgba(37,148,255,.28);background:var(--bg-2);overflow:hidden;
     margin-bottom:24px;transition:transform .25s,border-color .25s;
   }
-  .featured:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .featured:hover{transform:translateY(-4px);border-color:var(--blue)}
   .featured-img{position:relative;min-height:360px;overflow:hidden}
   .featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
   .featured:hover .featured-img img{transform:scale(1.04)}
-  .featured-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(18,17,23,.9))}
-  @media(max-width:760px){.featured-img::after{background:linear-gradient(180deg,transparent 55%,rgba(18,17,23,.9))}}
+  .featured-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(11,21,38,.9))}
+  @media(max-width:760px){.featured-img::after{background:linear-gradient(180deg,transparent 55%,rgba(11,21,38,.9))}}
   .featured-body{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
   @media(max-width:900px){.featured-body{padding:32px 30px}}
   @media(max-width:760px){.featured{grid-template-columns:1fr}.featured-img{min-height:220px}}
@@ -160,17 +114,17 @@
   .games-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   @media(max-width:680px){.games-grid{grid-template-columns:1fr}}
   .game-card{
-    border:1px solid var(--line);background:var(--bg-2);padding:30px 28px;
+    border:1px solid rgba(37,148,255,.20);background:var(--bg-2);padding:30px 28px;
     transition:transform .25s,border-color .25s;display:flex;flex-direction:column;
   }
-  .game-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .game-card:hover{transform:translateY(-4px);border-color:var(--blue)}
   .game-status{
     font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;
     text-transform:uppercase;padding:4px 10px;border:1px solid var(--line);
     display:inline-block;width:fit-content;margin-bottom:16px;color:var(--muted);
   }
   .game-status.live{color:#7fc97f;border-color:rgba(127,201,127,.4)}
-  .game-status.dev{color:var(--gold);border-color:rgba(201,162,75,.45)}
+  .game-status.dev{color:var(--gold);border-color:rgba(245,196,107,.45)}
   .game-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
   .game-meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
   .game-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;flex:1}
@@ -181,23 +135,19 @@
   }
   .link-gold:hover{gap:14px}
 
-  /* ---------- APPS ---------- */
-  .apps{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .apps-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:620px}
-  .app-card{
-    border:1px solid var(--line);background:var(--bg-3);padding:34px 32px;
-    transition:transform .25s,border-color .25s;display:flex;flex-direction:column;
+  /* ---------- FOOTER (shared with home) ---------- */
+  footer{
+    border-top:1px solid rgba(255,255,255,0.08);
+    text-align:center;padding:22px;color:#c4c4c4;font-size:14px;
   }
-  .app-card:hover{transform:translateY(-4px);border-color:var(--gold)}
-  .app-card h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:28px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .footer-icons{margin-top:12px;display:flex;justify-content:center;gap:18px;align-items:center}
+  .footer-icons a{display:inline-flex;align-items:center}
+  .footer-icons svg{width:24px;height:24px;display:block}
 
-  /* ---------- FOOTER ---------- */
-  footer{padding:56px 0 40px;border-top:1px solid var(--line)}
-  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
-  .foot-links{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
-  .foot-links a:hover{color:var(--text)}
-  .copyright{color:var(--muted);font-size:12px;letter-spacing:1px;margin-top:32px}
-
+  @media(max-width:800px){
+    header{padding:20px;height:auto;flex-direction:column;gap:18px}
+    header nav{gap:20px;flex-wrap:wrap;justify-content:center}
+  }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   }
@@ -205,16 +155,39 @@
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo">DAWN<span class="glow">GAMES</span></a>
-  <div class="nav-links">
-    <a href="games.html">Games</a>
-    <a href="apps.html">Apps</a>
-    <a href="devlog.html">Devlog</a>
-    <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Discord</a>
-    <a href="mailto:dawngames@dawngamesapp.com">Contact</a>
+<header>
+  <a href="index.html" class="logo">
+    <span style="font-size:32px;line-height:1;color:#f5c46b;letter-spacing:0">☀</span>
+    <div>
+      <span>DAWN</span>
+      GAMES
+    </div>
+  </a>
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="games.html" class="active">GAMES</a>
+    <a href="apps.html">APPS</a>
+    <a href="index.html#about">ABOUT</a>
+  </nav>
+
+  <div class="icons">
+    <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer" title="Discord">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5865F2" aria-label="Discord">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+      </svg>
+    </a>
+    <a href="mailto:dawngamesllc@gmail.com" title="Email">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="52 42 88 66" aria-label="Gmail">
+        <path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/>
+        <path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/>
+        <path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/>
+        <path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/>
+        <path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/>
+      </svg>
+    </a>
   </div>
-</nav>
+</header>
 
 <!-- GAMES -->
 <section id="games">
@@ -258,19 +231,22 @@
 
 <!-- FOOTER -->
 <footer id="contact">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="logo">DAWN<span class="glow">GAMES</span></div>
-      <div class="foot-links">
-        <a href="games.html">Games</a>
-        <a href="apps.html">Apps</a>
-        <a href="devlog.html">Devlog</a>
-        <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Discord</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="mailto:dawngames@dawngamesapp.com">Contact</a>
-      </div>
-    </div>
-    <div class="copyright">© 2026 Dawn Games LLC. All rights reserved.</div>
+  © 2026 Dawn Games LLC. All rights reserved.
+  <div class="footer-icons">
+    <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer" title="Discord">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5865F2" aria-label="Discord">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+      </svg>
+    </a>
+    <a href="mailto:dawngamesllc@gmail.com" title="Email">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="52 42 88 66" aria-label="Gmail">
+        <path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/>
+        <path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/>
+        <path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/>
+        <path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/>
+        <path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/>
+      </svg>
+    </a>
   </div>
 </footer>
 
