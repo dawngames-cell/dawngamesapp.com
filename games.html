@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dawn Games — Indie Studio Making Games & Apps</title>
-<meta name="description" content="Dawn Games is a solo indie studio building games and apps in the open — from Dawn Upon Us, a co-op survival game, to Beamer Connect, a BMW companion app.">
+<title>Games — Dawn Games</title>
+<meta name="description" content="Co-op survival and puzzle games from a solo indie studio.">
 <meta name="theme-color" content="#0a0a0c">
-<meta property="og:title" content="Dawn Games — Indie Studio">
-<meta property="og:description" content="A solo indie studio building games and apps in the open. Explore our games and apps, and follow the build.">
+<meta property="og:title" content="Games — Dawn Games">
+<meta property="og:description" content="Co-op survival and puzzle games from a solo indie studio.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://dawngamesapp.com">
+<meta property="og:url" content="https://dawngamesapp.com/games.html">
 <meta property="og:image" content="https://dawngamesapp.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dawn Games — Indie Studio">
-<meta name="twitter:description" content="A solo indie studio building games and apps in the open.">
+<meta name="twitter:title" content="Games — Dawn Games">
+<meta name="twitter:description" content="Co-op survival and puzzle games from a solo indie studio.">
 <meta name="twitter:image" content="https://dawngamesapp.com/og-image.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -118,34 +118,78 @@
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 
   /* ---------- SECTION SHELL ---------- */
-  section{padding:96px 0}
-
-  /* ---------- ENTRY CARDS ---------- */
-  .entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  @media(max-width:680px){.entry-grid{grid-template-columns:1fr}}
-  .entry-card{
-    position:relative;border:1px solid var(--line);background:var(--bg-2);
-    padding:56px 44px;min-height:300px;
-    display:flex;flex-direction:column;justify-content:flex-end;
-    transition:transform .25s,border-color .25s,background .25s;
+  section{padding:132px 0 96px}
+  .sec-head{margin-bottom:48px}
+  .sec-eyebrow{
+    font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:12px;
   }
-  .entry-card:hover{transform:translateY(-4px);border-color:var(--gold);background:var(--bg-3)}
-  .entry-eyebrow{
-    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:3px;
-    text-transform:uppercase;color:var(--gold);margin-bottom:14px;
-  }
-  .entry-label{
+  .sec-title{
     font-family:'Oswald',sans-serif;font-weight:700;
-    font-size:clamp(38px,6vw,58px);line-height:.95;letter-spacing:2px;
-    text-transform:uppercase;margin-bottom:14px;
+    font-size:clamp(30px,5vw,52px);line-height:1;letter-spacing:1px;
+    text-transform:uppercase;
   }
-  .entry-desc{color:var(--muted);font-size:16px;max-width:36ch;margin-bottom:26px;line-height:1.5}
-  .entry-arrow{
-    font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;
+  .sec-sub{color:var(--muted);max-width:56ch;margin-top:16px;font-size:16px}
+
+  /* ---------- FEATURED GAME ---------- */
+  .featured{
+    display:grid;grid-template-columns:1.15fr 1fr;
+    border:1px solid var(--line);background:var(--bg-2);overflow:hidden;
+    margin-bottom:24px;transition:transform .25s,border-color .25s;
+  }
+  .featured:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .featured-img{position:relative;min-height:360px;overflow:hidden}
+  .featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .featured:hover .featured-img img{transform:scale(1.04)}
+  .featured-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(18,17,23,.9))}
+  @media(max-width:760px){.featured-img::after{background:linear-gradient(180deg,transparent 55%,rgba(18,17,23,.9))}}
+  .featured-body{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
+  @media(max-width:900px){.featured-body{padding:32px 30px}}
+  @media(max-width:760px){.featured{grid-template-columns:1fr}.featured-img{min-height:220px}}
+  .featured-tag{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+  }
+  .featured-name{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(30px,4vw,40px);
+    letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;
+  }
+  .featured-desc{color:var(--muted);font-size:15.5px;margin-bottom:22px;max-width:42ch}
+
+  /* ---------- SMALLER CARDS ---------- */
+  .games-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:680px){.games-grid{grid-template-columns:1fr}}
+  .game-card{
+    border:1px solid var(--line);background:var(--bg-2);padding:30px 28px;
+    transition:transform .25s,border-color .25s;display:flex;flex-direction:column;
+  }
+  .game-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .game-status{
+    font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;padding:4px 10px;border:1px solid var(--line);
+    display:inline-block;width:fit-content;margin-bottom:16px;color:var(--muted);
+  }
+  .game-status.live{color:#7fc97f;border-color:rgba(127,201,127,.4)}
+  .game-status.dev{color:var(--gold);border-color:rgba(201,162,75,.45)}
+  .game-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .game-meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .game-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;flex:1}
+  .link-gold{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;
     letter-spacing:2px;text-transform:uppercase;color:var(--gold);
-    display:inline-flex;align-items:center;gap:9px;transition:gap .2s;
+    display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
   }
-  .entry-card:hover .entry-arrow{gap:15px}
+  .link-gold:hover{gap:14px}
+
+  /* ---------- APPS ---------- */
+  .apps{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .apps-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:620px}
+  .app-card{
+    border:1px solid var(--line);background:var(--bg-3);padding:34px 32px;
+    transition:transform .25s,border-color .25s;display:flex;flex-direction:column;
+  }
+  .app-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .app-card h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:28px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
 
   /* ---------- FOOTER ---------- */
   footer{padding:56px 0 40px;border-top:1px solid var(--line)}
@@ -172,37 +216,41 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero-hub" id="top">
-  <div class="hero-hub-bg"></div>
-  <div class="hero-hub-content">
-    <div class="wrap">
-      <div class="eyebrow">Dawn Games LLC &nbsp;&bull;&nbsp; Indie Studio</div>
-      <h1>Dawn Games</h1>
-      <p class="lede">A solo indie studio building games and apps in the open.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="devlog.html">Follow the build →</a>
-        <a class="btn btn-ghost" href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Join the Discord →</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- EXPLORE -->
-<section id="explore">
+<!-- GAMES -->
+<section id="games">
   <div class="wrap">
-    <div class="entry-grid">
-      <a class="entry-card" href="games.html">
-        <div class="entry-eyebrow">Explore</div>
-        <div class="entry-label">Games</div>
-        <p class="entry-desc">Playable worlds we're building — from co-op survival to fast, polished puzzle games.</p>
-        <span class="entry-arrow">Browse the games →</span>
+    <div class="sec-head">
+      <div class="sec-eyebrow">Games</div>
+      <h2 class="sec-title">What we're building</h2>
+      <p class="sec-sub">Games made to be played, not monetized — from a co-op survival flagship to quick, polished puzzlers.</p>
+    </div>
+
+    <!-- Featured -->
+    <a class="featured" href="dawn-upon-us.html">
+      <div class="featured-img"><img src="assets/hero_dawn_upon_us.jpg" alt="Dawn Upon Us key art" loading="lazy"></div>
+      <div class="featured-body">
+        <div class="featured-tag">Flagship Title · In Development</div>
+        <div class="featured-name">Dawn Upon Us</div>
+        <p class="featured-desc">Low-poly co-op survival, coming to Steam. Scavenge, build, and survive the occupation — alone or with friends.</p>
+        <span class="link-gold">Explore the game →</span>
+      </div>
+    </a>
+
+    <!-- Smaller titles -->
+    <div class="games-grid">
+      <a class="game-card" href="just-right.html">
+        <span class="game-status">⏳ Coming Soon</span>
+        <h3>Just Right</h3>
+        <div class="game-meta">Puzzle • Block Placement</div>
+        <p>Drag colorful blocks onto an 8×8 grid. Fill rows and columns for combos, unlock vibrant themes, and use power-ups when you're stuck — perfect for quick sessions or deep dives.</p>
+        <span class="link-gold">Learn more →</span>
       </a>
-      <a class="entry-card" href="apps.html">
-        <div class="entry-eyebrow">Explore</div>
-        <div class="entry-label">Apps</div>
-        <p class="entry-desc">Native iOS apps built for hobbyists and enthusiasts.</p>
-        <span class="entry-arrow">Browse the apps →</span>
+      <a class="game-card" href="block-drop-dg.html">
+        <span class="game-status live">◉ Live</span>
+        <h3>Block Drop</h3>
+        <div class="game-meta">Puzzle • Stacking • Arcade</div>
+        <p>Stack blocks with precision. Perfect drops chain into combos — unlock themes, climb the leaderboard, and compete globally. Simple to learn, tough to master.</p>
+        <span class="link-gold">Play now →</span>
       </a>
     </div>
   </div>
