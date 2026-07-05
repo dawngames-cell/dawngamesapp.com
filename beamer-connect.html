@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beamer Connect — The Easiest, Safest BMW Companion App | Dawn Games</title>
+<meta name="description" content="Beamer Connect turns your iPhone into a BMW companion: plain-English diagnostics, one-tap maintenance resets, and ECU coding with automatic safety backups. In development for iOS.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="Beamer Connect — The Easiest, Safest BMW Companion App">
+<meta property="og:description" content="Plain-English diagnostics, one-tap maintenance resets, and safe coding with automatic backups. Built for BMW owners who want confidence without a scan tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dawngamesapp.com/beamer-connect.html">
+<meta property="og:image" content="https://dawngamesapp.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beamer Connect — The Easiest, Safest BMW Companion App">
+<meta name="twitter:description" content="Plain-English diagnostics, one-tap maintenance resets, and safe coding with automatic backups. In development for iOS.">
+<meta name="twitter:image" content="https://dawngamesapp.com/og-image.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-2:#121117;
+    --bg-3:#16151c;
+    --watch:#b22222;
+    --watch-deep:#7d1414;
+    --gold:#c9a24b;
+    --text:#e8e6e1;
+    --muted:#9a978f;
+    --line:rgba(255,255,255,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+    background:linear-gradient(180deg,rgba(10,10,12,.95),rgba(10,10,12,0));
+    backdrop-filter:blur(8px);
+  }
+  .logo{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:20px;letter-spacing:3px;text-transform:uppercase;
+  }
+  .logo .glow{color:var(--gold)}
+  .nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero-hub{
+    position:relative;min-height:88vh;
+    display:flex;align-items:center;
+    padding:130px 0 90px;overflow:hidden;
+  }
+  .hero-hub-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 20% 20%,rgba(201,162,75,.15),transparent 55%),
+      radial-gradient(ellipse at 85% 78%,rgba(70,110,180,.12),transparent 58%),
+      linear-gradient(180deg,var(--bg-2) 0%,var(--bg) 100%);
+  }
+  .hero-hub-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 62%,var(--bg) 100%);
+  }
+  .hero-hub-content{position:relative;z-index:2;width:100%}
+  .eyebrow{
+    font-family:'Special Elite',monospace;
+    font-size:12px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+  .hero-hub h1{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(46px,9vw,104px);line-height:.92;
+    letter-spacing:1px;text-transform:uppercase;
+    max-width:16ch;margin-bottom:20px;text-shadow:0 4px 40px rgba(0,0,0,.6);
+  }
+  .hero-hub p.lede{
+    font-size:clamp(16px,2.1vw,20px);color:#d8d5cd;
+    max-width:52ch;margin-bottom:14px;line-height:1.5;
+  }
+  .hero-hub p.sub{color:var(--muted);max-width:52ch;margin-bottom:30px;font-size:15.5px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:14px;letter-spacing:2px;text-transform:uppercase;
+    padding:15px 30px;border:none;cursor:pointer;transition:all .2s;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-primary{background:var(--watch);color:#fff}
+  .btn-primary:hover{background:var(--watch-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .status-pill{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);
+    display:inline-flex;align-items:center;gap:8px;margin-top:26px;
+  }
+  .status-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0}
+  .sec-head{margin-bottom:48px}
+  .sec-eyebrow{
+    font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+  }
+  .sec-title{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(30px,5vw,52px);line-height:1;letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .sec-sub{color:var(--muted);max-width:56ch;margin-top:16px;font-size:16px}
+
+  /* ---------- FEATURES ---------- */
+  .features{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:680px){.features-grid{grid-template-columns:1fr}}
+  .feature{
+    border:1px solid var(--line);background:var(--bg-3);padding:32px 30px;
+    transition:transform .25s,border-color .25s;
+  }
+  .feature:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .feature-tag{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+  }
+  .feature h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+  .feature p{color:var(--muted);font-size:14.5px}
+
+  /* ---------- REQUIREMENTS ---------- */
+  .reqs-inner{max-width:760px}
+  .reqs-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+  .reqs-list li{
+    display:flex;gap:14px;align-items:flex-start;
+    color:var(--muted);font-size:15px;
+    padding-bottom:14px;border-bottom:1px solid var(--line);
+  }
+  .reqs-list li:last-child{border-bottom:none}
+  .reqs-list .k{
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:1px;
+    text-transform:uppercase;color:var(--text);min-width:150px;font-size:14px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line)}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .foot-links a:hover{color:var(--text)}
+  .copyright{color:var(--muted);font-size:12px;letter-spacing:1px;margin-top:32px}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">DAWN<span class="glow">GAMES</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#apps">Apps</a>
+    <a href="#features">Features</a>
+    <a href="devlog.html">Devlog</a>
+    <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Discord</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero-hub">
+  <div class="hero-hub-bg"></div>
+  <div class="hero-hub-content">
+    <div class="wrap">
+      <div class="eyebrow">Beamer Connect &nbsp;&bull;&nbsp; In Development</div>
+      <h1>The easiest, safest BMW companion app.</h1>
+      <p class="lede">Plain-English diagnostics. One-tap maintenance resets. ECU coding with automatic safety backups. Live vehicle data on your phone.</p>
+      <p class="sub">Built for BMW owners who want confidence without a scan tool.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="devlog.html">Follow the build →</a>
+        <a class="btn btn-ghost" href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Join the Discord →</a>
+      </div>
+      <div class="status-pill"><span class="dot"></span>In development · iOS 16+ · iPhone only</div>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Features Preview</div>
+      <h2 class="sec-title">Everything a scan tool does. Nothing you have to decode.</h2>
+      <p class="sec-sub">Four core tools, designed to be understood at a glance and safe to use on your own car.</p>
+    </div>
+    <div class="features-grid">
+      <article class="feature">
+        <div class="feature-tag">Diagnose</div>
+        <h3>Read the codes, in plain English</h3>
+        <p>Pull fault codes and see them translated into plain language — what's wrong, what it affects, and what to check next. No cross-referencing a forum thread.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-tag">Maintenance</div>
+        <h3>Track and reset in one tap</h3>
+        <p>Keep an eye on service items — oil, brakes, filters, and more — and reset them the moment the work is done. No dealer visit to clear the reminder.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-tag">Coding</div>
+        <h3>Customize with a safety net</h3>
+        <p>Enable the features you want with guided coding. Every write is preceded by an automatic backup, so you can always roll back to how the car left the factory.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-tag">Live Data</div>
+        <h3>Real numbers, in real time</h3>
+        <p>Watch RPM, speed, coolant temp, throttle, boost, and battery voltage live as you drive — the vitals that tell you how the car is really doing.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section id="requirements">
+  <div class="wrap reqs-inner">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Before You Start</div>
+      <h2 class="sec-title">What you'll need</h2>
+      <p class="sec-sub">Beamer Connect is still in development. Here's what it's being built to run on.</p>
+    </div>
+    <ul class="reqs-list">
+      <li><span class="k">Status</span><span>In development — early access is coming. Follow the build to know when it's ready.</span></li>
+      <li><span class="k">Device</span><span>iPhone running iOS 16 or later. iPhone-only at launch.</span></li>
+      <li><span class="k">Adapter</span><span>A WiFi OBD adapter (MHD or ELM327-compatible) plugged into your car's OBD-II port.</span></li>
+      <li><span class="k">Vehicle</span><span>BMW. Feature and coding support varies by model and year.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo">DAWN<span class="glow">GAMES</span></div>
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#apps">Apps</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:dawngames@dawngamesapp.com">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Dawn Games LLC. All rights reserved. Not affiliated with or endorsed by BMW AG.</div>
+  </div>
+</footer>
+
+<script data-goatcounter="https://dawngamesapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dawn Upon Us — Co-op Survival, Coming to Steam | Dawn Games</title>
+<meta name="description" content="Dawn Upon Us — a low-poly co-op survival game. The military has occupied the island. Scavenge, build, and survive, alone or with friends. Headed to Steam.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="Dawn Upon Us — Co-op Survival, Coming to Steam">
+<meta property="og:description" content="A low-poly co-op survival game. Scavenge, build, and survive as the patrols close in. Headed to Steam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dawngamesapp.com/dawn-upon-us.html">
+<meta property="og:image" content="https://dawngamesapp.com/assets/hero_dawn_upon_us.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dawn Upon Us — Co-op Survival, Coming to Steam">
+<meta name="twitter:description" content="A low-poly co-op survival game. Scavenge, build, and survive as the patrols close in. Headed to Steam.">
+<meta name="twitter:image" content="https://dawngamesapp.com/assets/hero_dawn_upon_us.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-2:#121117;
+    --bg-3:#16151c;
+    --watch:#b22222;
+    --watch-deep:#7d1414;
+    --dawn:#5c7a3d;
+    --dawn-deep:#3a4a2b;
+    --gold:#c9a24b;
+    --paper:#e7e0cd;
+    --text:#e8e6e1;
+    --muted:#9a978f;
+    --line:rgba(255,255,255,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+    background:linear-gradient(180deg,rgba(10,10,12,.95),rgba(10,10,12,0));
+    backdrop-filter:blur(8px);
+  }
+  .logo{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:20px;letter-spacing:3px;text-transform:uppercase;
+  }
+  .logo .glow{color:var(--gold)}
+  .nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;align-items:flex-end;
+    padding:0 0 64px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background:url('assets/hero_dawn_upon_us.jpg') center 78%/cover no-repeat;
+    transform:scale(1.08);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(10,10,12,.55) 0%,rgba(10,10,12,.15) 35%,rgba(10,10,12,.75) 80%,var(--bg) 100%),
+      radial-gradient(ellipse at 70% 30%,rgba(178,34,34,.12),transparent 55%);
+  }
+  .hero-content{position:relative;z-index:2;width:100%}
+  .eyebrow{
+    font-family:'Special Elite',monospace;
+    font-size:12px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+  .hero h1{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(44px,9vw,104px);line-height:.92;
+    letter-spacing:1px;text-transform:uppercase;
+    max-width:14ch;margin-bottom:20px;
+    text-shadow:0 4px 40px rgba(0,0,0,.6);
+  }
+  .hero p.lede{
+    font-size:clamp(15px,2vw,19px);color:#d8d5cd;
+    max-width:52ch;margin-bottom:32px;line-height:1.55;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:14px;letter-spacing:2px;text-transform:uppercase;
+    padding:15px 30px;border:none;cursor:pointer;transition:all .2s;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-primary{background:var(--watch);color:#fff}
+  .btn-primary:hover{background:var(--watch-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .status-pill{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .status-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0}
+  .sec-head{margin-bottom:48px}
+  .sec-eyebrow{
+    font-family:'Special Elite',monospace;font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--muted);margin-bottom:12px;
+  }
+  .sec-title{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(30px,5vw,52px);line-height:1;letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .sec-sub{color:var(--muted);max-width:56ch;margin-top:16px;font-size:16px}
+
+  /* ---------- THE WORLD (factions) ---------- */
+  .world{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .factions{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:760px){.factions{grid-template-columns:1fr}}
+  .faction{
+    position:relative;border:1px solid var(--line);overflow:hidden;
+    background:var(--bg-3);transition:transform .25s,border-color .25s;
+  }
+  .faction:hover{transform:translateY(-4px)}
+  .faction.watch:hover{border-color:var(--watch)}
+  .faction.dawn:hover{border-color:var(--dawn)}
+  .faction-img{aspect-ratio:3/4;overflow:hidden;position:relative}
+  .faction-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .faction:hover .faction-img img{transform:scale(1.04)}
+  .faction-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,12,.9))}
+  .faction-body{padding:24px 26px 28px;position:relative}
+  .faction-tag{
+    font-family:'Special Elite',monospace;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:8px;
+  }
+  .watch .faction-tag{color:var(--watch)}
+  .dawn .faction-tag{color:var(--dawn)}
+  .faction-name{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;
+    letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;
+  }
+  .faction-desc{color:var(--muted);font-size:14.5px;margin-bottom:20px;min-height:66px}
+  .faction-link{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;
+    letter-spacing:2px;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
+  }
+  .watch .faction-link{color:var(--watch)}
+  .dawn .faction-link{color:var(--dawn)}
+  .faction-link:hover{gap:14px}
+
+  /* ---------- MORE GAMES ---------- */
+  .games-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:680px){.games-grid{grid-template-columns:1fr}}
+  .game-card{
+    border:1px solid var(--line);background:var(--bg-2);padding:30px 28px;
+    transition:transform .25s,border-color .25s;display:flex;flex-direction:column;
+  }
+  .game-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .game-status{
+    font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;padding:4px 10px;border:1px solid var(--line);
+    display:inline-block;width:fit-content;margin-bottom:16px;color:var(--muted);
+  }
+  .game-status.live{color:#7fc97f;border-color:rgba(127,201,127,.4)}
+  .game-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .game-meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .game-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;flex:1}
+  .game-card .faction-link{color:var(--gold)}
+
+  /* ---------- STUDIO STRIP ---------- */
+  .studio{background:var(--bg-2);border-top:1px solid var(--line)}
+  .studio-inner{max-width:760px;margin:0 auto;text-align:center}
+  .studio blockquote{
+    font-family:'Oswald',sans-serif;font-weight:500;
+    font-size:clamp(22px,4vw,36px);line-height:1.25;letter-spacing:.5px;
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .studio blockquote .gold{color:var(--gold)}
+  .studio p{color:var(--muted);font-size:16px;max-width:54ch;margin:0 auto}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line)}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
+  .foot-links{display:flex;gap:24px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .foot-links a:hover{color:var(--text)}
+  .copyright{color:var(--muted);font-size:12px;letter-spacing:1px;margin-top:32px}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .hero-bg{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">DAWN<span class="glow">GAMES</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="#world">The World</a>
+    <a href="#games">Games</a>
+    <a href="devlog.html">Devlog</a>
+    <a href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Discord</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="flagship">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="eyebrow">Flagship Title &nbsp;&bull;&nbsp; In Development</div>
+      <h1>Dawn Upon Us</h1>
+      <p class="lede">A low-poly co-op survival game. The military has occupied the island. Scavenge, build, and survive — alone or with friends — as the patrols close in. Headed to Steam.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#world">Enter the World →</a>
+        <a class="btn btn-ghost" href="devlog.html">Follow the build →</a>
+        <a class="btn btn-ghost" href="https://discord.gg/CKtJHFsFMR" target="_blank" rel="noopener noreferrer">Join the Discord →</a>
+        <span class="status-pill"><span class="dot"></span>Wishlist coming to Steam</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- THE WORLD -->
+<section class="world" id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">The World</div>
+      <h2 class="sec-title">Two Sides. One Island.</h2>
+      <p class="sec-sub">The Watch claims the island belongs to them. The Dawn remembers who it really belongs to. Read each faction's own account of the occupation.</p>
+    </div>
+    <div class="factions">
+      <article class="faction watch">
+        <div class="faction-img"><img src="assets/watch_poster.jpg" alt="The Watch propaganda poster" loading="lazy"></div>
+        <div class="faction-body">
+          <div class="faction-tag">The Occupation</div>
+          <div class="faction-name">The Watch</div>
+          <p class="faction-desc">They arrived promising order, and never left. Security. Order. Prosperity. Obey — they watch. Read their official record of how the island was "saved."</p>
+          <a class="faction-link" href="the-watch.html">Read the Record →</a>
+        </div>
+      </article>
+      <article class="faction dawn">
+        <div class="faction-img"><img src="assets/dawn_poster.jpg" alt="The Dawn resistance poster" loading="lazy"></div>
+        <div class="faction-body">
+          <div class="faction-tag">The Resistance</div>
+          <div class="faction-name">The Dawn</div>
+          <p class="faction-desc">Not an army. An idea. Survivors who refused to give up, passing hope hand to hand. They took our home — we'll take it back. Read the survivor's record.</p>
+          <a class="faction-link" href="the-dawn.html">Read the Record →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MORE GAMES -->
+<section id="games">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Also from the Studio</div>
+      <h2 class="sec-title">More from Dawn Games</h2>
+      <p class="sec-sub">Smaller titles built along the way. No pay-to-win, no nonsense — just gameplay.</p>
+    </div>
+    <div class="games-grid">
+      <article class="game-card">
+        <span class="game-status live">◉ Live</span>
+        <h3>Block Drop DG</h3>
+        <div class="game-meta">Puzzle • Stacking • Arcade</div>
+        <p>Stack blocks with precision. Perfect drops chain into combos. Unlock themes, climb the leaderboard, and compete in weekly tournaments. Simple to learn, impossible to master.</p>
+        <a class="faction-link" href="https://dawngamesapp.com/block-drop-dg.html">Play Now →</a>
+      </article>
+      <article class="game-card">
+        <span class="game-status">⏳ Coming Soon</span>
+        <h3>Just Right</h3>
+        <div class="game-meta">Puzzle • Block Placement • Strategy</div>
+        <p>Drag colorful blocks onto an 8×8 grid. Fill rows and columns for combos. Strategic, satisfying, and perfect for quick sessions or deep dives.</p>
+        <a class="faction-link" href="https://dawngamesapp.com/just-right.html">Learn More →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio" id="studio">
+  <div class="wrap studio-inner">
+    <blockquote>If we can't stop <span class="gold">playing it</span>, it's ready.</blockquote>
+    <p>Dawn Games is a solo indie studio built from scratch — no marketing team, no big company, just a passion for making games we genuinely enjoy. You're early. Stick around and watch it come together.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo">DAWN<span class="glow">GAMES</span></div>
+      <div class="foot-links">
+        <a href="#flagship">Dawn Upon Us</a>
+        <a href="#games">Games</a>
+        <a href="https://dawngamesapp.com/privacy.html">Privacy</a>
+        <a href="mailto:dawngames@dawngamesapp.com">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Dawn Games LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+<script data-goatcounter="https://dawngamesapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
