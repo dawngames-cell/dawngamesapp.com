@@ -1,0 +1,14 @@
+# Preserve the existing root-published, custom-domain static site.
+# These are authoring/review files, not public website assets.
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tests
+  - tools
+  - README.md
+  - REVIEW.md
+  - menu-mockup.html
+  - .claude
+  - assets/brand/README.md
+  - assets/brand/dawn-games-master.jpg

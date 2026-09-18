@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "update-08",
+    "title": "Military POI, roads, and resistance hideouts",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-06-21",
+    "summary": "Good build day. Finished the military POI — it's done and in place.",
+    "body": "<p>Good build day. Finished the military POI — it's done and in place. Ran roads out from the big city so the world connects better instead of areas feeling isolated. Did a lot of terrain work too: new mountains, and smoothed out the older ones that were looking rough. Also started building the Dawn resistance areas — hidden spots where survivors lie low and stay out of the Watch's sight. The world's starting to feel like a place with two sides actually living in it.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-07",
+    "title": "Terrain pass (and a crash)",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-06-17",
+    "summary": "Lost the previous session's work to a crash before it saved — it happens. Rather than redo it right away, I switched gears and put time into the terrain instead.",
+    "body": "<p>Lost the previous session's work to a crash before it saved — it happens. Rather than redo it right away, I switched gears and put time into the terrain instead. Added mountains, reworked the terrain textures so it's not just flat green anymore, and started on water. The water's still a work in progress — fighting some shader issues — but the land is looking a lot more like a real place.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-06",
+    "title": "The island, end to end",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": null,
+    "summary": "The full island is in. Suburb, the big city, the port and docks, the military base, farmland, an airfield, rail lines, beaches, and the ridgeline that walls the whole thing in.",
+    "body": "<p>The full island is in. Suburb, the big city, the port and docks, the military base, farmland, an airfield, rail lines, beaches, and the ridgeline that walls the whole thing in. There's even a second landmass offshore — that's for later. For now, the world you'll be surviving on exists as one connected place instead of a pile of separate test scenes.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-05",
+    "title": "Shooting works",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": null,
+    "summary": "First real combat test. There's a weapon in your hands, it fires, and it does damage.",
+    "body": "<p>First real combat test. There's a weapon in your hands, it fires, and it does damage. Set up a training dummy with a health system to prove it out — shot it from 100 down to nothing and the numbers tracked the whole way. Not final art or balance, but the core loop is real now: aim, fire, it matters.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-04",
+    "title": "Under the hood",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": null,
+    "summary": "Less to show in pictures, but this was the big one. The core scripting and game systems are in — spawning, the framework the whole game runs on, and the multiplayer foundation so this can be played with friends, not just alone.",
+    "body": "<p>Less to show in pictures, but this was the big one. The core scripting and game systems are in — spawning, the framework the whole game runs on, and the multiplayer foundation so this can be played with friends, not just alone. What's left here isn't building the systems, it's placing the pieces: spawn points and patrol routes across the map. The hard part's done.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-03",
+    "title": "Movement",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": null,
+    "summary": "The character walks, runs, and idles. It's animated and it feels like a person moving through the world instead of a floating camera.",
+    "body": "<p>The character walks, runs, and idles. It's animated and it feels like a person moving through the world instead of a floating camera. I'm still reworking parts of it — not fully happy yet — but it's in and it's being refined.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-02",
+    "title": "The military base (and where the silo went)",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": null,
+    "summary": "I'd built an underground missile silo — two missile chambers, a control room, an armory, the works. Then I made a call: it didn't belong here yet.",
+    "body": "<p>I'd built an underground missile silo — two missile chambers, a control room, an armory, the works. Then I made a call: it didn't belong here yet. So I cut it from this build and folded the effort into a bigger, better military base instead. The silo isn't gone — it's coming back later, across the bridge, as part of a much larger piece of the world down the road. Sometimes the honest move is admitting something's in the wrong place and moving it.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  },
+  {
+    "slug": "update-01",
+    "title": "Building the world, one place at a time",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": null,
+    "summary": "The approach from the start: build the island piece by piece, as real places. The logging camp, the suburb, the little town, the church, the water treatment plant, forest cabins, the port.",
+    "body": "<p>The approach from the start: build the island piece by piece, as real places. The logging camp, the suburb, the little town, the church, the water treatment plant, forest cabins, the port. Each one gets a rough pass first, then a detail pass. Slow, but it means every corner of the map is somewhere, not filler.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": true
+  }
+]

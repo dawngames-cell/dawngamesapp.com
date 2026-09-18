@@ -1,0 +1,8 @@
+/* Loaded only when scripts are disabled. No first-paint layout change for JS users. */
+@media(max-width:900px){
+  .site-header{height:auto;position:relative}
+  .nav-shell{flex-wrap:wrap;padding-block:20px}
+  .menu-toggle{display:none}
+  #primary-nav{display:flex;position:static;height:auto;width:100%;padding:15px 0 0;flex-flow:row wrap;gap:10px 20px}
+  #primary-nav>a{font-size:14px;margin:0;padding:10px 0}
+}

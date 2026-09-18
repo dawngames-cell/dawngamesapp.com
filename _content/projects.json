@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "dawn-upon-us", "title": "Dawn Upon Us", "kind": "flagship", "status": "In development",
+    "description": "An open-world military experience focused on exploration, tactical gameplay and a large immersive environment.",
+    "genre": "Open-world / Tactical", "engine": "Unity", "world": "8 km development map",
+    "image": "/assets/media/dawn-world-1024.webp", "path": "/games/dawn-upon-us/",
+    "trailer": null, "store": null, "release": null,
+    "gallery": [
+      { "src": "/assets/media/dawn-world-1024.webp", "thumbnail": "/assets/media/dawn-world-640.webp", "alt": "Dawn Upon Us concept art of an occupied city", "caption": "An occupied island", "kind": "Concept art · Not gameplay", "width": 1021, "height": 705 },
+      { "src": "/assets/media/watch-poster.webp", "thumbnail": "/assets/media/watch-poster.webp", "alt": "Fictional Watch propaganda artwork", "caption": "The Watch", "kind": "World artwork · Not gameplay", "width": 721, "height": 900 },
+      { "src": "/assets/media/dawn-poster.webp", "thumbnail": "/assets/media/dawn-poster.webp", "alt": "Fictional Dawn resistance poster artwork", "caption": "The resistance", "kind": "World artwork · Not gameplay", "width": 636, "height": 900 }
+    ]
+  },
+  { "slug": "block-drop-dg", "title": "Block Drop DG", "kind": "game", "label": "Precision / Arcade", "description": "A smaller game with a simple challenge: stack carefully, find your rhythm and keep the tower going.", "path": "/block-drop-dg.html", "icon": "/assets/media/block-drop.webp", "store": "https://apps.apple.com/us/app/block-drop-dg/id6761087564" },
+  { "slug": "darknet-idle", "title": "Darknet Idle", "kind": "game", "label": "Idle / Simulation", "description": "An earlier mobile game exploring a fictional hacking-themed idle economy and progression.", "path": "/darknet-idle.html" },
+  { "slug": "hacker-life", "title": "Hacker: Day in the Life", "kind": "game", "label": "Simulation / Mobile", "description": "A single-player, fictional hacker-life simulation from the studio’s earlier mobile projects.", "path": "/hacker-life.html" }
+]

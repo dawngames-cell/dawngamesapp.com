@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /menu-mockup.html
+Disallow: /tools/
+Disallow: /tests/
+Disallow: /_review/
+Sitemap: https://dawngamesapp.com/sitemap.xml

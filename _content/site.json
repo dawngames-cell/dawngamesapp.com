@@ -1,0 +1,21 @@
+{
+  "origin": "https://dawngamesapp.com",
+  "name": "Dawn Games",
+  "company": "Dawn Games LLC",
+  "email": "dawngames@dawngamesapp.com",
+  "discord": "https://discord.gg/CKtJHFsFMR",
+  "brand": {
+    "fullLogo": "/assets/brand/dawn-games-full.webp",
+    "mark": "/assets/brand/dawn-games-dg.webp",
+    "status": "Owner-supplied white-D/orange-G logo received September 18, 2026. Exact artwork, cropped/resized only; original JPEG preserved.",
+    "favicon": "/favicon.ico"
+  },
+  "hero": {
+    "image": "/assets/media/dawn-world-1024.webp",
+    "alt": "Dawn Upon Us concept artwork: a figure overlooking an occupied city",
+    "caption": "DAWN UPON US — CONCEPT ART, NOT GAMEPLAY",
+    "video": null,
+    "videoPoster": null
+  },
+  "analytics": "https://dawngamesapp.goatcounter.com/count"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "dawn-games-studio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dawn Games static studio website. No client-side framework or runtime dependencies.",
+  "scripts": {
+    "build": "node _tools/build.mjs",
+    "check": "node --check _tools/build.mjs && node --check assets/js/site.js && node --check _tools/serve.mjs",
+    "test": "node --test tests/content.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:extended": "node tests/extended.mjs",
+    "preview": "node _tools/serve.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0"
+  }
+}
