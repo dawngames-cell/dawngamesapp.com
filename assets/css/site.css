@@ -180,6 +180,9 @@ main:focus{outline:0}
 .archive-notice p{font-size:13px;max-width:920px;line-height:1.8}
 .archive-notice>.caption{color:#c4a274;display:block;margin-bottom:8px;font-size:10px}
 .news-list .news-grid{row-gap:25px}
+.full-development-logs{max-width:800px;margin:0 auto 80px}
+.full-development-log{padding:45px 0;border-top:1px solid var(--line)}
+.full-development-log>h2{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:22px 0 32px}
 .article-page{max-width:960px;padding-block:70px 110px}
 .article-page>.text-link{margin-bottom:60px}
 .article-page h1{font-size:clamp(40px,5vw,73px);margin:24px 0 35px;line-height:1.07}
