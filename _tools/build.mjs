@@ -85,7 +85,11 @@ function newsCards(list = news.slice(0, 2)) {
 }
 function fullDevelopmentLogs() {
   const current = news.filter(item => !item.archived).slice().reverse();
-  return `<div class="full-development-logs">${current.map(item => `<article class="full-development-log"><div class="news-meta"><span>${esc(item.category)}</span>${date(item)}</div><h2><a href="/news/${esc(item.slug)}/">Development Log — ${esc(item.title)}</a></h2><div class="prose">${item.body}</div></article>`).join('')}</div><h2>Development archive</h2>${newsCards(news.filter(item => item.archived))}`;
+  const statusHeading = '<h2>Current Development — October 2026</h2>';
+  const island = current.find(item => item.slug === 'building-the-new-island');
+  const statusIndex = island?.body.indexOf(statusHeading) ?? -1;
+  const status = statusIndex >= 0 ? `<article class="full-development-log"><h2>Current Development — October 2026</h2><div class="prose">${island.body.slice(statusIndex + statusHeading.length)}</div></article>` : '';
+  return `<div class="full-development-logs">${status}${current.map(item => `<article class="full-development-log"><div class="news-meta"><span>${esc(item.category)}</span>${date(item)}</div><h2><a href="/news/${esc(item.slug)}/">Development Log — ${esc(item.title)}</a></h2><div class="prose">${item === island && statusIndex >= 0 ? item.body.slice(0, statusIndex) : item.body}</div></article>`).join('')}</div><h2>Development archive</h2>${newsCards(news.filter(item => item.archived))}`;
 }
 function updates() {
   return `<section class="section updates"><div class="container"><div class="section-heading"><div>${eyebrow('Latest development updates')}<h2>THE WORK<br>BEHIND THE WORLD.</h2></div>${link('/news/', 'All updates')}</div>${newsCards()}</div></section>`;
