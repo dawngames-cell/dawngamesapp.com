@@ -42,9 +42,10 @@ test('all referenced local files and link targets exist', () => {
 });
 test('news preserves actual entries and missing dates, never fabricates posts', () => {
   const news = JSON.parse(read('_content/news.json'));
-  assert.equal(news.length, 8);
-  assert.equal(news.filter(x => x.date).length, 2);
-  assert(news.every(x => x.archived && x.body.includes('<p>')));
+  const archive = news.filter(x => x.archived);
+  assert.equal(archive.length, 8);
+  assert.equal(archive.filter(x => x.date).length, 2);
+  assert(news.every(x => x.body.includes('<p>')));
 });
 test('no fabricated releases, active store buttons or gameplay screenshots', () => {
   const game = JSON.parse(read('_content/projects.json'))[0];

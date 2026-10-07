@@ -1,5 +1,65 @@
 [
   {
+    "slug": "building-the-new-island",
+    "title": "Building the New Island",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-10-07",
+    "summary": "Work on the new 8 km × 8 km HDRP island is underway, with four major POIs and a world designed around its geography.",
+    "body": "<p>Work on the new 8 km × 8 km HDRP world is now underway.</p><p>The island is being designed around four major POIs:</p><ul><li>Military Compound &amp; Airfield</li><li>Large City</li><li>Residential Neighborhood</li><li>Shipping Port &amp; Industrial Area</li></ul><p>The new terrain gives us significantly larger mountains, valleys, coastline and natural separation between different areas of the map.</p><p>Roads are being designed around the geography rather than simply connecting locations with straight lines. Forests, meadows, mountain vegetation, coastlines and open areas are also being treated as distinct parts of the environment instead of covering the entire map with the same vegetation.</p><p>The goal is for traveling across the island to feel like you’re moving through an actual place rather than between four isolated game areas.</p><h2>Current Development — October 2026</h2><p>At this point, Dawn Upon Us is effectively entering its next major stage of development.</p><p>The foundation now centers around:</p><ul><li>8 km × 8 km open world</li><li>HDRP rendering</li><li>Hyper-realistic visual direction</li><li>Four major POIs</li><li>Working player movement</li><li>Weapon handling and combat</li><li>AI characters</li><li>Damage and death systems</li><li>Large-scale road network</li><li>Ocean/coastline</li><li>Forests and natural environments</li></ul><p>Current work is focused heavily on completing the City and Residential Neighborhood, expanding AI throughout the world, improving environmental density, and turning the individual systems we’ve developed into an actual playable open-world experience.</p><p>There’s still a lot to build, but the difference between where Dawn Upon Us started and what it’s becoming is massive.</p><p>The 8 km × 8 km HDRP version is now the official foundation we’re moving forward with.</p><p>And this time, we’re building the game around the world we actually wanted from the beginning.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": false
+  },
+  {
+    "slug": "gameplay-is-starting-to-come-together",
+    "title": "Gameplay Is Starting to Come Together",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-10-07",
+    "summary": "Movement, weapon handling, combat and AI are coming together as development moves toward testing the systems in the open world.",
+    "body": "<p>The rebuild isn’t only visual.</p><p>Character movement, weapon handling, aiming, firing, reloading, damage, bullet impacts and death animations have all been undergoing major development.</p><p>We now have a controllable character and functioning AI characters interacting through the combat system.</p><p>The focus is shifting from testing individual systems in isolation toward putting those systems into the actual open world.</p><p>That means walking through real environments, encountering AI, getting into firefights, testing sightlines and movement, and seeing how the systems actually feel together.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": false
+  },
+  {
+    "slug": "moving-to-hdrp",
+    "title": "Moving to HDRP",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-10-07",
+    "summary": "Dawn Upon Us has moved to Unity’s High Definition Render Pipeline, establishing a new foundation alongside the 8 km × 8 km island.",
+    "body": "<p>As part of the move toward hyper-realism, Dawn Upon Us has officially moved to Unity’s High Definition Render Pipeline (HDRP).</p><p>The previous versions of the game were built using URP. It worked well while we were establishing the game, but the visual target for Dawn has grown substantially.</p><p>HDRP gives us much more room to push realistic lighting, shadows, atmospheric effects, clouds, fog, reflections, water, materials, interiors, weapons and long-distance environments.</p><p>Combined with the new 8 km × 8 km island, this marks what we’re treating as the new foundation of Dawn Upon Us.</p><p>Rather than continuing to rebuild pieces of the previous world, we’re applying everything we learned to a cleaner foundation designed around the game Dawn has become.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": false
+  },
+  {
+    "slug": "from-low-poly-to-hyper-realistic",
+    "title": "From Low Poly to Hyper-Realistic",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-10-07",
+    "summary": "The visual direction has changed from a stylized prototype to a hyper-realistic open-world survival game.",
+    "body": "<p>Another major change has been the entire visual direction of Dawn Upon Us.</p><p>The project originally started with a much more low-poly/stylized appearance. It allowed us to prototype quickly, but as development continued, it became obvious that it wasn’t the game we actually wanted to make.</p><p>So we changed direction.</p><p>Dawn Upon Us is now being developed as a hyper-realistic open-world survival game.</p><p>That decision affects essentially everything:</p><ul><li>environments and terrain</li><li>buildings and infrastructure</li><li>vegetation</li><li>characters</li><li>weapons</li><li>animations</li><li>lighting</li><li>weather and atmosphere</li><li>materials</li><li>water</li><li>visual effects</li></ul><p>We’re no longer designing around what worked for the original low-poly version. New content is being judged against the new realistic visual target.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": false
+  },
+  {
+    "slug": "the-world-kept-getting-bigger",
+    "title": "The World Kept Getting Bigger",
+    "category": "Development",
+    "game": "Dawn Upon Us",
+    "date": "2026-10-07",
+    "summary": "From the original 1 km prototype through several world sizes, Dawn Upon Us is officially moving forward with an 8 km × 8 km world.",
+    "body": "<p>Development of Dawn Upon Us has changed significantly over the past few months. One of the biggest challenges has been finding the right scale for the world.</p><p>Development originally began with a 1 km × 1 km prototype, which gave us enough room to establish the basic gameplay and environment systems.</p><p>From there, we experimented with a 2 km × 2 km world before making the jump to a much larger 8 km × 8 km map.</p><p>That first 8 km world taught us a lot about building at open-world scale, but we eventually pulled development back to 5 km × 5 km so we could focus more heavily on terrain quality, roads, vegetation, POIs, optimization, and gameplay systems.</p><p>After everything learned from those versions, we’ve now made the biggest world decision yet:</p><p>Dawn Upon Us is officially returning to an 8 km × 8 km world — and this is the map we’re moving forward with.</p><p>This isn’t simply another resize. The new world is being built around better terrain, mountains, coastline, road planning, vegetation, and four major areas of interest designed specifically around the geography.</p>",
+    "image": null,
+    "gallery": [],
+    "archived": false
+  },
+  {
     "slug": "update-08",
     "title": "Military POI, roads, and resistance hideouts",
     "category": "Development",

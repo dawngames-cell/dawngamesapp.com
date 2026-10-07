@@ -1,8 +1,8 @@
 [
   {
     "slug": "dawn-upon-us", "title": "Dawn Upon Us", "kind": "flagship", "status": "In development",
-    "description": "An open-world military experience focused on exploration, tactical gameplay and a large immersive environment.",
-    "genre": "Open-world / Tactical", "engine": "Unity", "world": "8 km development map",
+    "description": "An open-world survival game pursuing a hyper-realistic visual direction, with tactical gameplay across an 8 km × 8 km island.",
+    "genre": "Open-world / Survival / Tactical", "engine": "Unity HDRP", "world": "8 km × 8 km island",
     "image": "/assets/media/dawn-world-1024.webp", "path": "/games/dawn-upon-us/",
     "trailer": null, "store": null, "release": null,
     "gallery": [
