@@ -10,7 +10,7 @@ const game = projects.find(p => p.kind === 'flagship');
 const routes = [];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const json = value => JSON.stringify(value).replace(/</g, '\\u003c');
-const arrow = '<span aria-hidden="true">↗</span>';
+const arrow = '';
 const btn = (href, label, secondary = false) => `<a class="button${secondary ? ' secondary' : ''}" href="${esc(href)}">${esc(label)}${arrow}</a>`;
 const link = (href, label) => `<a class="text-link" href="${esc(href)}">${esc(label)}${arrow}</a>`;
 const eyebrow = text => `<p class="eyebrow">${esc(text)}</p>`;
@@ -48,7 +48,7 @@ ${hero ? `<link rel="preload" as="image" href="${esc(site.hero.image)}" imagesrc
 </body></html>`;
   const output = route === '/' ? 'index.html' : route.endsWith('.html') ? route.slice(1) : `${route.slice(1)}index.html`;
   fs.mkdirSync(path.dirname(path.join(root, output)), { recursive: true });
-  const sizedHtml = html.replace(/<img\b[^>]*>/g, tag => {
+  const sizedHtml = html.replace(/<span\b[^>]*>[↗↑↓←→]<\/span>/g, '').replace(/[↗↑↓←→]/g, '').replace(/<img\b[^>]*>/g, tag => {
     const src = tag.match(/src="([^"]+)"/)?.[1];
     if (!src || /\bwidth=/.test(tag)) return tag;
     const size = dimensions[src.startsWith('/') ? src : `/${src}`];
