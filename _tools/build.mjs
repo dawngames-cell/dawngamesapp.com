@@ -83,13 +83,21 @@ function newsCards(list = news.slice(0, 2)) {
   if (!list.length) return `<div class="empty-state"><h3>The next chapter is in the making.</h3><p>Development updates and studio news will appear here when there’s something to share.</p></div>`;
   return `<div class="news-grid">${list.map(item => `<article class="news-card"><div class="news-meta"><span>${esc(item.category)}</span>${date(item)}</div><h3><a href="/news/${esc(item.slug)}/">${esc(item.title)} ${arrow}</a></h3><p>${esc(item.summary)}</p><span class="caption">${esc(item.game || site.name)} · ${item.archived ? 'Development archive' : 'Studio update'}</span></article>`).join('')}</div>`;
 }
+function developmentGallery() {
+  const base = '/assets/media/development/';
+  const images = [
+    ['character-study.jpg', 'Character development', 'Wireframe character study with two equipped soldiers in a test scene', 1024, 1280],
+    ['island-atmosphere.jpg', 'Island & atmosphere', 'Early island terrain surrounded by ocean and clouds', 1280, 720]
+  ];
+  return `<section class="development-gallery" id="development-gallery" aria-labelledby="development-gallery-title">${eyebrow('Behind the scenes')}<h2 id="development-gallery-title">In Development</h2><p>Early development captures · October 2026 · Work in progress.</p><div class="development-media-grid">${images.map(([file, title, alt, width, height]) => `<figure><a class="gallery-trigger" data-gallery="development" href="${base}${file}" data-caption="${esc(title)} — October 2026 · Work in progress" data-alt="${esc(alt)}" aria-label="Enlarge ${esc(title)}"><img src="${base}${file}" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy"></a><figcaption>${esc(title)}</figcaption></figure>`).join('')}<figure class="development-video"><video controls playsinline preload="none" poster="${base}video-poster.jpg" width="1920" height="1080" aria-label="Combat and animation development test"><source src="${base}development-preview.mp4" type="video/mp4"></video><figcaption>Combat &amp; animation test · Development capture<p>A short first-person test showing a character’s damage and death animation in a test arena, with development overlays visible.</p></figcaption></figure></div></section>`;
+}
 function fullDevelopmentLogs() {
   const current = news.filter(item => !item.archived).slice().reverse();
   const statusHeading = '<h2>Current Development — October 2026</h2>';
   const island = current.find(item => item.slug === 'building-the-new-island');
   const statusIndex = island?.body.indexOf(statusHeading) ?? -1;
   const status = statusIndex >= 0 ? `<article class="full-development-log"><h2>Current Development — October 2026</h2><div class="prose">${island.body.slice(statusIndex + statusHeading.length)}</div></article>` : '';
-  return `<div class="full-development-logs">${status}${current.map(item => `<article class="full-development-log"><div class="news-meta"><span>${esc(item.category)}</span>${date(item)}</div><h2><a href="/news/${esc(item.slug)}/">Development Log — ${esc(item.title)}</a></h2><div class="prose">${item === island && statusIndex >= 0 ? item.body.slice(0, statusIndex) : item.body}</div></article>`).join('')}</div><h2>Development archive</h2>${newsCards(news.filter(item => item.archived))}`;
+  return `<div class="full-development-logs">${status}${developmentGallery()}${current.map(item => `<article class="full-development-log"><div class="news-meta"><span>${esc(item.category)}</span>${date(item)}</div><h2><a href="/news/${esc(item.slug)}/">Development Log — ${esc(item.title)}</a></h2><div class="prose">${item === island && statusIndex >= 0 ? item.body.slice(0, statusIndex) : item.body}</div></article>`).join('')}</div><h2>Development archive</h2>${newsCards(news.filter(item => item.archived))}`;
 }
 function updates() {
   return `<section class="section updates"><div class="container"><div class="section-heading"><div>${eyebrow('Latest development updates')}<h2>THE WORK<br>BEHIND THE WORLD.</h2></div>${link('/news/', 'All updates')}</div>${newsCards()}</div></section>`;
