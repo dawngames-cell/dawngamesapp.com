@@ -11,7 +11,5 @@
       { "src": "/assets/media/dawn-poster.webp", "thumbnail": "/assets/media/dawn-poster.webp", "alt": "Fictional Dawn resistance poster artwork", "caption": "The resistance", "kind": "World artwork · Not gameplay", "width": 636, "height": 900 }
     ]
   },
-  { "slug": "block-drop-dg", "title": "Block Drop DG", "kind": "game", "label": "Precision / Arcade", "description": "A smaller game with a simple challenge: stack carefully, find your rhythm and keep the tower going.", "path": "/block-drop-dg.html", "icon": "/assets/media/block-drop.webp", "store": "https://apps.apple.com/us/app/block-drop-dg/id6761087564" },
-  { "slug": "darknet-idle", "title": "Darknet Idle", "kind": "game", "label": "Idle / Simulation", "description": "An earlier mobile game exploring a fictional hacking-themed idle economy and progression.", "path": "/darknet-idle.html" },
-  { "slug": "hacker-life", "title": "Hacker: Day in the Life", "kind": "game", "label": "Simulation / Mobile", "description": "A single-player, fictional hacker-life simulation from the studio’s earlier mobile projects.", "path": "/hacker-life.html" }
+  { "slug": "block-drop-dg", "title": "Block Drop DG", "kind": "game", "label": "Precision / Arcade", "description": "A smaller game with a simple challenge: stack carefully, find your rhythm and keep the tower going.", "path": "/block-drop-dg.html", "icon": "/assets/media/block-drop.webp", "store": "https://apps.apple.com/us/app/block-drop-dg/id6761087564" }
 ]

@@ -70,7 +70,7 @@ All Dawn Upon Us imagery in this version is **existing concept/world artwork, ex
 - Dawn Upon Us: open-world/tactical, in development, Unity, 8 km development map. No invented player counts, release dates, awards, publishers, multiplayer or store availability.
 - Eight existing devlog entries remain an explicitly **historical archive**. Only two had dates; six remain undated. Old prototype claims are not treated as current feature commitments.
 - Add news items to `_content/news.json` with title, slug, category, date (or null), summary, trusted article HTML, optional image/gallery and `archived: false` for approved new announcements. Article HTML is authored locally, never accepted from visitors. Review new content before publishing.
-- Existing Block Drop DG, Darknet Idle and Hacker: Day in the Life portfolio pages remain accessible with their game information and privacy text.
+- Block Drop DG remains in the portfolio. Darknet Idle and Hacker: Day in the Life were retired at the owner’s request; their old URLs redirect to the remaining projects and their original content is retained in the non-public archive.
 - **Just Right and Beamer Connect were removed at the owner’s request.** Their old URLs redirect to the remaining portfolio; original source is preserved in the checkpoint and non-public content archive.
 - The Watch and The Dawn lore remain clearly marked as in-world fiction, separate from the studio identity.
 - Existing product-specific game privacy wording is retained, not silently rewritten as legal advice. Owner/legal review is recommended for older policy inconsistencies, including local-data/leaderboard scope and refund wording.
